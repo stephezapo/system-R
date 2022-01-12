@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
+    id "org.jruyi.thrift" version "0.4.1"
+}
+
+mainClassName = 'org.zapo.systemr.Main'
+
+group 'org.zapo'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.apache.thrift', name: 'libthrift', version: '0.15.0'
+}
+
+javafx {
+    version = "17"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+compileThrift {
+    thriftExecutable "f:/Dev/Apache Thrift/thrift-0.15.0"
+    sourceDir "$projectDir/../server/src/main/thrift"
+    outputDir "$buildDir/gen-src"
+
+    nowarn true
+    strict true
+    verbose true
+    recurse true
+    debug true
+    allowNegKeys true
+    allow64bitsConsts true
+    createGenFolder false
+
+    generator 'java', 'private-members'
+}
+
+sourceSets {
+    main.java.srcDirs += 'src/generated/thrift/gen-java'
+}
