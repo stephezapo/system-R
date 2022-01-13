@@ -1,5 +1,9 @@
 package core.fixtures.library
 
+import org.zapo.lumosmaxima.remote.thrift.T_FixtureManufacturer
+import org.zapo.lumosmaxima.remote.thrift.T_FixtureMode
+import org.zapo.lumosmaxima.remote.thrift.T_FixtureModel
+import org.zapo.lumosmaxima.remote.thrift.T_FixtureModels
 import util.FileUtils
 import java.io.File
 import java.nio.file.Files
@@ -9,8 +13,8 @@ import javax.xml.parsers.DocumentBuilderFactory
 class FixtureLibrary(libraryDirectory: String) {
 
     var libraryDir = libraryDirectory
-    var manufacturers = ArrayList<Manufacturer>()
-    var models = ArrayList<Model>()
+    var manufacturers = ArrayList<T_FixtureManufacturer>()
+    var models = HashMap<String, T_FixtureModels> ()
 
     fun createLibrary() {
 
@@ -60,20 +64,47 @@ class FixtureLibrary(libraryDirectory: String) {
             val modelName = fTypeTag.item(0).attributes.getNamedItem("Name").nodeValue
             val modelDescription = fTypeTag.item(0).attributes.getNamedItem("Description").nodeValue
             val modelThumbnail = fTypeTag.item(0).attributes.getNamedItem("Thumbnail").nodeValue
-            val modes = ArrayList<Mode>()
+            val modes = ArrayList<T_FixtureMode>()
 
             val modesXML = doc.getElementsByTagName("DMXMode")
 
             for(m in 0 until modesXML.length) {
-                modes.add(Mode(modesXML.item(m).attributes.getNamedItem("Name").nodeValue))
+                modes.add(T_FixtureMode(modesXML.item(m).attributes.getNamedItem("Name").nodeValue))
             }
 
-            if(!manufacturers.contains(Manufacturer((manufacturer))))
+            if(!manufacturers.contains(T_FixtureManufacturer((manufacturer))))
             {
-                manufacturers.add(Manufacturer(manufacturer))
+                manufacturers.add(T_FixtureManufacturer(manufacturer))
             }
 
-            models.add(Model(modelName, manufacturer, modelDescription, modelThumbnail, modes))
+            if(models.containsKey(manufacturer))
+            {
+                var modelList = models[manufacturer]
+                modelList?.models?.add(T_FixtureModel(modelName, manufacturer, modelDescription, modelThumbnail, modes))
+            }
+            else
+            {
+                val modelList = T_FixtureModels(ArrayList<T_FixtureModel>())
+                modelList.models.add(T_FixtureModel(modelName, manufacturer, modelDescription, modelThumbnail, modes))
+                models[manufacturer] = modelList
+            }
+        }
+    }
+
+    public fun getFixtureManufacturers(): List<T_FixtureManufacturer>
+    {
+        return manufacturers.toList()
+    }
+
+    public fun getFixtureModels(manufacturer: String): T_FixtureModels
+    {
+        if(models.containsKey(manufacturer))
+        {
+            return models.get(manufacturer)!!
+        }
+        else
+        {
+            return T_FixtureModels(ArrayList<T_FixtureModel>())
         }
     }
 }

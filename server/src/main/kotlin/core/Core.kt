@@ -4,8 +4,8 @@ import core.fixtures.library.FixtureLibrary
 import org.zapo.lumosmaxima.remote.APIService
 
 object Core {
-    internal var fixtureLib = FixtureLibrary("fixturelib")
-    internal var api = APIService(2424)
+    private var fixtureLib = FixtureLibrary("fixturelib")
+    private var api = APIService(2424)
 
 
     init {
