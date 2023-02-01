@@ -4,7 +4,7 @@ import core.Core
 
 fun main()
 {
-    println("Lumos Maxima Server ----------------")
+    println("SYSTEM-R Server ----------------")
 
-    //Core.getFixtureLibrary().createLibrary()
+    Core.getFixtureLibrary().createLibrary()
 }
