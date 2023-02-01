@@ -2,7 +2,7 @@
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.3.50'
-    id "org.jruyi.thrift" version "0.4.1"
+    //id "org.jruyi.thrift" version "0.4.1"
 }
 
 group 'org.zapo'
@@ -20,7 +20,7 @@ dependencies {
     testCompile "org.mockito:mockito-core:2.+"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     compile "org.jetbrains.kotlin:kotlin-stdlib-common"
-    compile group: 'org.apache.thrift', name: 'libthrift', version: '0.15.0'
+    //compile group: 'org.apache.thrift', name: 'libthrift', version: '0.15.0'
 }
 
 //idea.module.sourceDirs += file("$buildDir/generated/thrift")
@@ -32,7 +32,7 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-compileThrift {
+/*compileThrift {
     thriftExecutable "F:/Dev/Apache Thrift/thrift-0.15.0"
     sourceDir "$projectDir/src/main/thrift"
     outputDir "$buildDir/gen-src"
@@ -51,7 +51,7 @@ compileThrift {
 
 sourceSets {
     main.java.srcDirs += 'src/generated/thrift/gen-java'
-}
+}*/
 
 task execute(type:JavaExec) {
     main = 'org.zapo.lumosmaxima.appKt'

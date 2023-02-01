@@ -6,5 +6,5 @@ fun main()
 {
     println("Lumos Maxima Server ----------------")
 
-    Core.getFixtureLibrary().createLibrary()
+    //Core.getFixtureLibrary().createLibrary()
 }
