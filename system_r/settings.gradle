@@ -2,3 +2,5 @@ rootProject.name = 'system_r'
 include 'thelibrary'
 include 'core'
 include 'ui'
+include 'mvrgdtf'
+

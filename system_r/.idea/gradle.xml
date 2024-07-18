@@ -8,6 +8,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/mvrgdtf" />
             <option value="$PROJECT_DIR$/thelibrary" />
             <option value="$PROJECT_DIR$/ui" />
           </set>

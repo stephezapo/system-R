@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'com.github.bjornvester.xjc' version '1.8.2' // https://github.com/bjornvester/xjc-gradle-plugin
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+// Add generated directory into the main source set.
+sourceSets {
+    main {
+        java.srcDirs("src/generated/java")
+    }
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+xjc {
+    xsdDir.set(layout.projectDirectory.dir("src/main/resources/mvrgdtf"))
+}

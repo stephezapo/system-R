@@ -1,4 +1,4 @@
-package org.example;
+package org.stephezapo.system_r.core;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
