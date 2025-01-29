@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -128,6 +129,18 @@ public class Window extends Stage
     protected void mouseClick(double x, double y)
     {
         // TODO: show Dialog which Tile shall be created
+
+        // First check if there is no tile at the mouse position
+        for(Node node : tiles.getChildren())
+        {
+            if(node instanceof Tile)
+            {
+                if(((Tile) node).getRect().contains(new Point2D(x,y)))
+                {
+                    return;
+                }
+            }
+        }
 
         DmxTile dmxTile = new DmxTile();
 

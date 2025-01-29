@@ -1,5 +1,6 @@
 package org.stephezapo.system_r.core.ui;
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
@@ -26,5 +27,10 @@ public class Tile extends Pane
         dropShadow.setOffsetY(3.0);
         dropShadow.setColor(Color.color(0.1, 0.1, 0.1));
         setEffect(dropShadow);
+    }
+
+    protected Rectangle2D getRect()
+    {
+        return new Rectangle2D(getLayoutX(), getLayoutY(), getWidth(), getHeight());
     }
 }
