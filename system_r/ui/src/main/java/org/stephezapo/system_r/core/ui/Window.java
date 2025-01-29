@@ -4,22 +4,28 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import javafx.geometry.Point2D;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Window extends Stage
 {
+    private WindowType type;
     private Properties windowProps = new Properties();
     private File propsFile;
     private AtomicBoolean storeFlag = new AtomicBoolean(false);
     private ScheduledExecutorService executorService;
     private ScheduledFuture<?> scheduledFuture;
+    private final Group tiles = new Group();
 
     public enum WindowType
     {
@@ -31,10 +37,12 @@ public class Window extends Stage
         EXTERNAL1,
         EXTERNAL2
     }
-    private MainPanel mainPanel;
+    private GridPanel gridPanel;
 
     public Window(WindowType type)
     {
+        this.type = type;
+
         String fileString = "config/Window_";
         switch(type)
         {
@@ -77,14 +85,18 @@ public class Window extends Stage
 
         propsFile = new File(fileString + "_Props.prp");
 
-        mainPanel = new MainPanel();
-        setScene(new Scene(mainPanel, 300, 250));
+        gridPanel = new GridPanel(this);
+        setScene(new Scene(gridPanel, 300, 250));
+
+        gridPanel.getChildren().add(tiles);
 
         getScene().widthProperty().addListener((observableValue, number, t1) -> resize());
         getScene().heightProperty().addListener((observableValue, number, t1) -> resize());
         maximizedProperty().addListener((observableValue, number, t1) -> resize());
         xProperty().addListener((observableValue, number, t1) -> move());
         yProperty().addListener((observableValue, number, t1) -> move());
+
+        setOnCloseRequest(windowEvent -> close());
 
         loadProps();
 
@@ -99,9 +111,36 @@ public class Window extends Stage
         if(scheduledFuture != null)
         {
             scheduledFuture.cancel(false);
-
-            // TODO: add other things necessary for closing
+            WindowManager.closeWindow(type);
         }
+    }
+
+    protected Point2D getWindowGridSize()
+    {
+        return gridPanel.getGridSize();
+    }
+
+    protected Point2D getWindowGridCellSize()
+    {
+        return gridPanel.getGridCellSize();
+    }
+
+    protected void mouseClick(double x, double y)
+    {
+        // TODO: show Dialog which Tile shall be created
+
+        DmxTile dmxTile = new DmxTile();
+
+        // determine the nearest grid position to the left/top and calculate position and size
+        Point2D cellSize = getWindowGridCellSize();
+        double posX = Math.floor(x/cellSize.getX());
+        double posY = Math.floor(y/cellSize.getY());
+        dmxTile.setLayoutX(posX*cellSize.getX());
+        dmxTile.setLayoutY(posY*cellSize.getY());
+        dmxTile.setPrefWidth((getWindowGridSize().getX()-posX)*cellSize.getX());
+        dmxTile.setPrefHeight((getWindowGridSize().getY()-posY)*cellSize.getY());
+
+        tiles.getChildren().add(dmxTile);
     }
 
     private void loadProps()
@@ -169,7 +208,7 @@ public class Window extends Stage
 
     private void resize()
     {
-        mainPanel.redraw();
+        gridPanel.redraw();
         storeFlag.set(true);
     }
 

@@ -2,6 +2,7 @@ package org.stephezapo.system_r.core.ui;
 
 import java.util.HashMap;
 import java.util.Map;
+import javafx.geometry.Point2D;
 import org.stephezapo.system_r.core.ui.Window.WindowType;
 
 public class WindowManager
@@ -70,10 +71,30 @@ public class WindowManager
         return false;
     }
 
+    protected static void closeWindow(WindowType type)
+    {
+        windows.remove(type);
+
+        if(windows.isEmpty())
+        {
+            UiCore.shutdown();
+        }
+    }
+
     private static void createWindow(WindowType type)
     {
         Window window = new Window(type);
         windows.put(type, window);
         window.show();
+    }
+
+    protected Point2D getWindowGridSize(WindowType type)
+    {
+        if(windows.containsKey(type))
+        {
+            return windows.get(type).getWindowGridSize();
+        }
+
+        return null;
     }
 }
