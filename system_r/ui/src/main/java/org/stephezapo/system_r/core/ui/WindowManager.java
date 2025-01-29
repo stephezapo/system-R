@@ -1,8 +1,6 @@
 package org.stephezapo.system_r.core.ui;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import org.stephezapo.system_r.core.ui.Window.WindowType;
 

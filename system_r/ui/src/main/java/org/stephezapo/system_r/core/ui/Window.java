@@ -10,11 +10,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javax.swing.event.ChangeEvent;
 
 public class Window extends Stage
 {
@@ -22,6 +19,7 @@ public class Window extends Stage
     private File propsFile;
     private AtomicBoolean storeFlag = new AtomicBoolean(false);
     private ScheduledExecutorService executorService;
+    private ScheduledFuture<?> scheduledFuture;
 
     public enum WindowType
     {
@@ -81,18 +79,29 @@ public class Window extends Stage
 
         mainPanel = new MainPanel();
         setScene(new Scene(mainPanel, 300, 250));
-        loadProps();
 
-        widthProperty().addListener((observableValue, number, t1) -> resize());
-        heightProperty().addListener((observableValue, number, t1) -> resize());
+        getScene().widthProperty().addListener((observableValue, number, t1) -> resize());
+        getScene().heightProperty().addListener((observableValue, number, t1) -> resize());
         maximizedProperty().addListener((observableValue, number, t1) -> resize());
         xProperty().addListener((observableValue, number, t1) -> move());
         yProperty().addListener((observableValue, number, t1) -> move());
 
-        executorService = Executors.newScheduledThreadPool(1);
-        ScheduledFuture<?> scheduledFuture = executorService.scheduleAtFixedRate(this::storeProps, 1, 5, TimeUnit.SECONDS);
+        loadProps();
 
-        mainPanel.paint();
+        executorService = Executors.newScheduledThreadPool(1);
+        scheduledFuture = executorService.scheduleAtFixedRate(this::storeProps, 1, 5, TimeUnit.SECONDS);
+
+        resize();
+    }
+
+    public void close()
+    {
+        if(scheduledFuture != null)
+        {
+            scheduledFuture.cancel(false);
+
+            // TODO: add other things necessary for closing
+        }
     }
 
     private void loadProps()
@@ -137,8 +146,15 @@ public class Window extends Stage
 
             if(!propsFile.exists())
             {
-                propsFile.getParentFile().mkdirs();
-                propsFile.createNewFile();
+                if(!propsFile.getParentFile().mkdirs())
+                {
+                    throw new IOException("Could not create parent directory");
+                }
+
+                if(!propsFile.createNewFile())
+                {
+                    throw new IOException("Could not create property file for " + getTitle());
+                }
             }
 
             windowProps.store(new FileWriter(propsFile), "");
@@ -153,6 +169,7 @@ public class Window extends Stage
 
     private void resize()
     {
+        mainPanel.redraw();
         storeFlag.set(true);
     }
 

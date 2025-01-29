@@ -1,7 +1,7 @@
 package org.stephezapo.system_r.core.ui;
 
+import static org.stephezapo.system_r.core.ui.ColorTheme.COLOR_LIGHT_GRAY;
 import static org.stephezapo.system_r.core.ui.ColorTheme.COLOR_MAIN_BACKGROUND;
-import static org.stephezapo.system_r.core.ui.ColorTheme.COLOR_TILE_HEADER;
 
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
@@ -17,21 +17,29 @@ public class MainPanel extends Pane
 
     }
 
-    public void paint()
+    public void redraw()
     {
+        getChildren().removeIf(node -> node instanceof Circle);
+
         this.setBackground(Background.fill(COLOR_MAIN_BACKGROUND));
+
         double width = this.getWidth();
         double height = this.getHeight();
 
+        double pointsX = Math.round(width/POINT_SPACING);
+        double pointsY = Math.round(height/POINT_SPACING);
+
+        double actualSpacingX = width/pointsX;
+        double actualSpacingY = height/pointsY;
+
         // Draw points in a regular square pattern
-        for (int x = 0; x < width; x += POINT_SPACING)
+        for (double x = actualSpacingX; x < width; x += actualSpacingX)
         {
-            for (int y = 0; y < height; y += POINT_SPACING)
+            for (double y = actualSpacingY; y < height; y += actualSpacingY)
             {
-                Circle circle = new Circle(x, y, POINT_RADIUS, COLOR_TILE_HEADER);
+                Circle circle = new Circle(x, y, POINT_RADIUS, COLOR_LIGHT_GRAY);
                 getChildren().add(circle);
             }
         }
-
     }
 }

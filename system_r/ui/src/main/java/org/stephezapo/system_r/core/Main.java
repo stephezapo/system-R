@@ -15,11 +15,11 @@ public class Main
             WindowManager.createMainWindow();
 
             // create window 2 (playback)
-            WindowManager.createPlaybackWindow();
-            WindowManager.createPlaybackWindow();
+            //WindowManager.createPlaybackWindow();
+            //WindowManager.createPlaybackWindow();
 
             // create window 3 (programmer panel)
-            WindowManager.createSpecialWindow();
+            //WindowManager.createSpecialWindow();
         }
     }
     public static void main(String[] args)

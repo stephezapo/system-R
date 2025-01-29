@@ -4,6 +4,7 @@ import javafx.scene.paint.Color;
 
 public class ColorTheme
 {
+    public static final Color COLOR_LIGHT_GRAY = Color.valueOf("#dddddd");
     public static final Color COLOR_ACCENT = Color.valueOf("#c678dd");
     public static final Color COLOR_FOREGROUND = Color.valueOf("#abb2bf");
     public static final Color COLOR_TILE_HEADER = Color.valueOf("#5c6370");
