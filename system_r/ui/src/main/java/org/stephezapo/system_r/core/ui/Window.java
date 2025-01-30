@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -116,7 +114,7 @@ public class Window extends Stage
         }
     }
 
-    protected Point2D getWindowGridSize()
+    protected GridPoint getWindowGridSize()
     {
         return gridPanel.getGridSize();
     }
@@ -126,34 +124,119 @@ public class Window extends Stage
         return gridPanel.getGridCellSize();
     }
 
+    protected GridPoint getGridPointFromXY(double x, double y)
+    {
+        Point2D cellSize = getWindowGridCellSize();
+
+        return new GridPoint((short)Math.floor(x/cellSize.getX()),
+            (short)Math.floor(y/cellSize.getY()));
+    }
+
     protected void mouseClick(double x, double y)
     {
         // TODO: show Dialog which Tile shall be created
+        GridPoint mousePoint = getGridPointFromXY(x, y);
 
         // First check if there is no tile at the mouse position
+        if(gridCellOccupied(mousePoint))
+        {
+            return;
+        }
+
+        DmxTile dmxTile = new DmxTile(this);
+
+        GridRect fittedRectangle = getFittedRectangle(mousePoint);
+        dmxTile.moveAndScale(fittedRectangle);
+
+        tiles.getChildren().add(dmxTile);
+    }
+
+    private GridRect getFittedRectangle(GridPoint position)
+    {
+        // find the largest possible dimension
+        // strategy: start with a rect with height 1 and maximum width and find the right-side limit
+        // increase height iteratively and check again for the right-side limit
+        GridPoint gridSize = getWindowGridSize();
+        int maxHeight = 0;
+        int maxWidth = 0;
+
+        // find the max height of a single column
+        for(int gy = position.getY(); gy < gridSize.getY(); gy++)
+        {
+            if(gridCellOccupied(new GridPoint(position.getX(), gy)))
+            {
+                break;
+            }
+
+            maxHeight += 1;
+        }
+
+        // find the max width of a single row
+        for(int gx = position.getX(); gx < gridSize.getX(); gx++)
+        {
+            if(gridCellOccupied(new GridPoint(gx, position.getY())))
+            {
+                break;
+            }
+
+            maxWidth += 1;
+        }
+
+        // start with a rect with maximum width and height=1 and iteratively grow in height
+        if(maxWidth > 1 && maxHeight > 1)
+        {
+            int newWidth = maxWidth;
+            int newHeight = 1;
+            boolean stop = false;
+            for(int y = position.getY(); y < position.getY() + maxHeight; y++)
+            {
+                for(int x = position.getX(); x < position.getX() + maxWidth; x++)
+                {
+                    if(gridCellOccupied(new GridPoint(x, y)))
+                    {
+                        // the newly truncated rect would be higher than wider -> stop
+                        if(x - position.getX() < maxHeight)
+                        {
+                            stop = true;
+                        }
+                        else
+                        {
+                            maxWidth = x - position.getX() - 1;
+                        }
+
+                        break;
+                    }
+                }
+
+                if(stop)
+                {
+                    newHeight -= 1;
+                    break;
+                }
+
+                newHeight += 1;
+            }
+
+            return new GridRect(position.getX(), position.getY(),
+                newWidth, newHeight);
+        }
+
+        return new GridRect(position.getX(), position.getY(),
+            maxWidth, maxHeight);
+    }
+
+    private boolean gridCellOccupied(GridPoint point)
+    {
+        boolean occupied = false;
         for(Node node : tiles.getChildren())
         {
-            if(node instanceof Tile)
+            if(((Tile)node).getGridRect().contains(point))
             {
-                if(((Tile) node).getRect().contains(new Point2D(x,y)))
-                {
-                    return;
-                }
+                return true;
             }
         }
 
-        DmxTile dmxTile = new DmxTile();
-
-        // determine the nearest grid position to the left/top and calculate position and size
-        Point2D cellSize = getWindowGridCellSize();
-        double posX = Math.floor(x/cellSize.getX());
-        double posY = Math.floor(y/cellSize.getY());
-        dmxTile.setLayoutX(posX*cellSize.getX());
-        dmxTile.setLayoutY(posY*cellSize.getY());
-        dmxTile.setPrefWidth((getWindowGridSize().getX()-posX)*cellSize.getX());
-        dmxTile.setPrefHeight((getWindowGridSize().getY()-posY)*cellSize.getY());
-
-        tiles.getChildren().add(dmxTile);
+        return occupied;
     }
 
     private void loadProps()

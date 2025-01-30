@@ -15,7 +15,7 @@ public class GridPanel
 {
     private static final int POINT_SPACING = 50;
     private static final double POINT_RADIUS = 0.5;
-    private Point2D gridSize = new Point2D(1, 1);
+    private GridPoint gridSize = new GridPoint();
     private Point2D cellSize = new Point2D(1, 1);
     private Window parentWindow;
 
@@ -34,7 +34,8 @@ public class GridPanel
         double width = this.getWidth();
         double height = this.getHeight();
 
-        gridSize = new Point2D(Math.round(width/POINT_SPACING), Math.round(height/POINT_SPACING));
+        gridSize = new GridPoint((int)Math.round(width/POINT_SPACING),
+            (int)Math.round(height/POINT_SPACING));
 
         cellSize = new Point2D(width/gridSize.getX(), height/gridSize.getY());
 
@@ -50,7 +51,7 @@ public class GridPanel
         }
     }
 
-    protected Point2D getGridSize()
+    protected GridPoint getGridSize()
     {
         return gridSize;
     }

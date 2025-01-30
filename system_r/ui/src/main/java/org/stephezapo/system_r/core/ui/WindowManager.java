@@ -88,7 +88,7 @@ public class WindowManager
         window.show();
     }
 
-    protected Point2D getWindowGridSize(WindowType type)
+    protected GridPoint getWindowGridSize(WindowType type)
     {
         if(windows.containsKey(type))
         {
