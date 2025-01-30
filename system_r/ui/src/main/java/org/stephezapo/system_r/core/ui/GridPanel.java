@@ -1,10 +1,11 @@
 package org.stephezapo.system_r.core.ui;
 
-import static org.stephezapo.system_r.core.ui.ColorTheme.COLOR_LIGHT_GRAY;
-import static org.stephezapo.system_r.core.ui.ColorTheme.COLOR_MAIN_BACKGROUND;
+import static org.stephezapo.system_r.core.ui.Style.COLOR_GRID_POINT;
+import static org.stephezapo.system_r.core.ui.Style.COLOR_MAIN_BACKGROUND;
+import static org.stephezapo.system_r.core.ui.Style.SIZE_GRID_POINT_RADIUS;
+import static org.stephezapo.system_r.core.ui.Style.SIZE_GRID_POINT_SPACING;
 
 import javafx.geometry.Point2D;
-import javafx.scene.DepthTest;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
@@ -13,8 +14,6 @@ import javafx.scene.shape.Circle;
 public class GridPanel
     extends Pane
 {
-    private static final int POINT_SPACING = 50;
-    private static final double POINT_RADIUS = 0.5;
     private GridPoint gridSize = new GridPoint();
     private Point2D cellSize = new Point2D(1, 1);
     private Window parentWindow;
@@ -34,8 +33,8 @@ public class GridPanel
         double width = this.getWidth();
         double height = this.getHeight();
 
-        gridSize = new GridPoint((int)Math.round(width/POINT_SPACING),
-            (int)Math.round(height/POINT_SPACING));
+        gridSize = new GridPoint((int)Math.round(width/ SIZE_GRID_POINT_SPACING),
+            (int)Math.round(height/ SIZE_GRID_POINT_SPACING));
 
         cellSize = new Point2D(width/gridSize.getX(), height/gridSize.getY());
 
@@ -44,7 +43,7 @@ public class GridPanel
         {
             for (double y = cellSize.getY(); y < height; y += cellSize.getY())
             {
-                Circle circle = new Circle(x, y, POINT_RADIUS, COLOR_LIGHT_GRAY);
+                Circle circle = new Circle(x, y, SIZE_GRID_POINT_RADIUS, COLOR_GRID_POINT);
                 circle.setViewOrder(Double.MAX_VALUE);
                 getChildren().add(circle);
             }

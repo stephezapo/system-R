@@ -5,5 +5,6 @@ public class DmxTile extends Tile
     protected DmxTile(Window parent)
     {
         super(parent);
+        setTitle("DMX");
     }
 }
