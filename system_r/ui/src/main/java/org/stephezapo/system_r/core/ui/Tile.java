@@ -24,8 +24,8 @@ public class Tile extends Pane
 
         setViewOrder(Double.MAX_VALUE-1);
         setBackground(Background.fill(Style.COLOR_TILE_BACKGROUND));
-        setBorder(new Border(new BorderStroke(Style.COLOR_TILE_HEADER,
-            BorderStrokeStyle.SOLID, new CornerRadii(0), BorderWidths.DEFAULT)));
+        setBorder(new Border(new BorderStroke(Style.COLOR_MAIN_BACKGROUND,
+            BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(2))));
 
         /*DropShadow dropShadow = new DropShadow();
         dropShadow.setRadius(10.0);

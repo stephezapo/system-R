@@ -23,8 +23,8 @@ public class TileHeader extends Pane
     {
         setViewOrder(Double.MAX_VALUE-2);
         setBackground(Background.fill(Style.COLOR_TILE_HEADER));
-        setBorder(new Border(new BorderStroke(Style.COLOR_ACCENT,
-            BorderStrokeStyle.SOLID, new CornerRadii(0), BorderWidths.DEFAULT)));
+        setBorder(new Border(new BorderStroke(Style.COLOR_MAIN_BACKGROUND,
+            BorderStrokeStyle.SOLID, new CornerRadii(0), new BorderWidths(2))));
 
         setPrefHeight(SIZE_TILE_HEADER);
 
