@@ -1,7 +1,5 @@
 package org.stephezapo.system_r.core.ui;
 
-import static org.stephezapo.system_r.core.ui.Style.SIZE_TILE_HEADER;
-
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.layout.Background;
@@ -47,9 +45,7 @@ public class Tile extends Pane
 
     private void updateLayout()
     {
-        header.setLayoutX(0);
-        header.setLayoutY(0);
-        header.setPrefWidth(getPrefWidth());
+        header.updateLayout(getPrefWidth());
     }
 
     protected void moveAndScale(GridRect rect)

@@ -13,6 +13,7 @@ public class Style
     public static final Color COLOR_TILE_TITLE = Color.valueOf("#ffffff");
     public static final Color COLOR_TILE_BACKGROUND = Color.valueOf("#2B2D30");
     public static final Color COLOR_MAIN_BACKGROUND = Color.valueOf("#1E1F22");
+    public static final Color COLOR_TILE_CLOSE_BUTTON = Color.valueOf("#DD0000");
 
     // dimensions
     public static final double SIZE_TILE_HEADER = 30;
