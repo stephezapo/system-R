@@ -186,7 +186,7 @@ public class Window extends Stage
         if(maxWidth > 1 && maxHeight > 1)
         {
             int newWidth = maxWidth;
-            int newHeight = 1;
+            int newHeight = 0;
             boolean stop = false;
             for(int y = position.getY(); y < position.getY() + maxHeight; y++)
             {
@@ -195,13 +195,13 @@ public class Window extends Stage
                     if(gridCellOccupied(new GridPoint(x, y)))
                     {
                         // the newly truncated rect would be higher than wider -> stop
-                        if(x - position.getX() < maxHeight)
+                        if(x - position.getX() < maxHeight + 1)
                         {
                             stop = true;
                         }
                         else
                         {
-                            maxWidth = x - position.getX() - 1;
+                            maxWidth = x - position.getX();
                         }
 
                         break;
@@ -210,7 +210,6 @@ public class Window extends Stage
 
                 if(stop)
                 {
-                    newHeight -= 1;
                     break;
                 }
 
@@ -218,7 +217,7 @@ public class Window extends Stage
             }
 
             return new GridRect(position.getX(), position.getY(),
-                newWidth, newHeight);
+                maxWidth, newHeight);
         }
 
         return new GridRect(position.getX(), position.getY(),
