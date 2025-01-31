@@ -19,4 +19,5 @@ public class Style
     public static final int SIZE_TILE_TITLE_FONT = 22;
     public static final int SIZE_GRID_POINT_SPACING = 80;
     public static final double SIZE_GRID_POINT_RADIUS = 0.5;
+    public static final int DMX_GRID_COLUMN_COUNT = 25;
 }

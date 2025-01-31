@@ -3,6 +3,7 @@ package org.stephezapo.system_r.core.ui;
 import static org.stephezapo.system_r.core.ui.Style.SIZE_TILE_HEADER;
 
 import javafx.geometry.Point2D;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
@@ -63,6 +64,11 @@ public class Tile extends Pane
         setPrefHeight(rect.getH()*cellSize.getY());
 
         updateLayout();
+    }
+
+    protected Rectangle2D getPanelRect()
+    {
+        return new Rectangle2D(0, header.getPrefHeight(), getPrefWidth(), getPrefHeight()-header.getPrefHeight());
     }
 
     protected void setTitle(String title)
