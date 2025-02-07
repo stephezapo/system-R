@@ -1,5 +1,6 @@
 package org.stephezapo.system_r.core;
 
+import atlantafx.base.theme.PrimerDark;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.stephezapo.system_r.core.ui.UiCore;
@@ -12,6 +13,7 @@ public class Main
         @Override
         public void start(Stage primaryStage)
         {
+            Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
             UiCore.startup();
         }
     }
