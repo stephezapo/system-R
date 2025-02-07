@@ -13,7 +13,7 @@ import javafx.scene.layout.Pane;
 public class Tile extends Pane
 {
     private GridRect gridRect;
-    private Window parent;
+    protected Window parent;
     private TileHeader header;
 
     protected Tile(Window parent)
@@ -33,7 +33,7 @@ public class Tile extends Pane
         dropShadow.setColor(Color.color(0.1, 0.1, 0.1));
         setEffect(dropShadow);*/
 
-        header = new TileHeader();
+        header = new TileHeader(this);
         updateLayout();
         getChildren().add(header);
     }
@@ -43,7 +43,7 @@ public class Tile extends Pane
         return gridRect;
     }
 
-    private void updateLayout()
+    protected void updateLayout()
     {
         header.updateLayout(getPrefWidth());
     }
@@ -70,5 +70,10 @@ public class Tile extends Pane
     protected void setTitle(String title)
     {
         header.setText(title);
+    }
+
+    protected void close()
+    {
+        parent.closeTile(this);
     }
 }

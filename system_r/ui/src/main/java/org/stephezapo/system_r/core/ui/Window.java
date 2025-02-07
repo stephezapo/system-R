@@ -15,6 +15,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.stephezapo.system_r.core.ui.Dialog.DialogType;
 
 public class Window extends Stage
 {
@@ -25,6 +26,8 @@ public class Window extends Stage
     private ScheduledExecutorService executorService;
     private ScheduledFuture<?> scheduledFuture;
     private final Group tiles = new Group();
+    private Point2D lastClick = new Point2D(0, 0);
+    private boolean dialogIsOpen = false;
 
     public enum WindowType
     {
@@ -36,6 +39,7 @@ public class Window extends Stage
         EXTERNAL1,
         EXTERNAL2
     }
+
     private GridPanel gridPanel;
 
     public Window(WindowType type)
@@ -114,6 +118,35 @@ public class Window extends Stage
         }
     }
 
+    public void showDialog(DialogType type)
+    {
+        Dialog dialog;
+
+        switch(type)
+        {
+            case NEW_TILE:
+                dialog = new NewTileDialog(this);
+                break;
+            default:
+                dialog = new Dialog(this, "Dialog");
+                break;
+        }
+
+        dialogIsOpen = true;
+        gridPanel.getChildren().add(dialog);
+    }
+
+    protected void closeTile(Tile tile)
+    {
+        tiles.getChildren().remove(tile);
+    }
+
+    protected void closeDialog(Dialog dialog)
+    {
+        gridPanel.getChildren().remove(dialog);
+        dialogIsOpen = false;
+    }
+
     protected GridPoint getWindowGridSize()
     {
         return gridPanel.getGridSize();
@@ -134,6 +167,13 @@ public class Window extends Stage
 
     protected void mouseClick(double x, double y)
     {
+        if(dialogIsOpen)
+        {
+            return;
+        }
+
+        lastClick = new Point2D(x, y);
+
         // TODO: show Dialog which Tile shall be created
         GridPoint mousePoint = getGridPointFromXY(x, y);
 
@@ -143,12 +183,16 @@ public class Window extends Stage
             return;
         }
 
-        DmxTile dmxTile = new DmxTile(this);
+        showDialog(DialogType.NEW_TILE);
+    }
 
+    protected void addTile(Tile newTile)
+    {
+        GridPoint mousePoint = getGridPointFromXY(lastClick.getX(), lastClick.getY());
         GridRect fittedRectangle = getFittedRectangle(mousePoint);
-        dmxTile.moveAndScale(fittedRectangle);
+        newTile.moveAndScale(fittedRectangle);
 
-        tiles.getChildren().add(dmxTile);
+        tiles.getChildren().add(newTile);
     }
 
     private GridRect getFittedRectangle(GridPoint position)
@@ -229,7 +273,7 @@ public class Window extends Stage
         boolean occupied = false;
         for(Node node : tiles.getChildren())
         {
-            if(((Tile)node).getGridRect().contains(point))
+            if(!(node instanceof Dialog) && ((Tile)node).getGridRect().contains(point))
             {
                 return true;
             }

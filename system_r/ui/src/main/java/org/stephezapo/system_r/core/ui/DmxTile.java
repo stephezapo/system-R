@@ -9,13 +9,16 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import javafx.application.Platform;
 import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
+import javafx.geometry.VPos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
 import org.stephezapo.system_r.core.Core;
 
 public class DmxTile extends Tile
@@ -41,20 +44,23 @@ public class DmxTile extends Tile
             gridPane.getColumnConstraints().add(column);
         }
 
-        ColumnConstraints column2 = new ColumnConstraints();
-        column2.setPercentWidth(50);
-
         getChildren().add(gridPane);
 
         for(int idx = 0; idx < 512; idx++)
         {
             dmxLabels[idx] = new Label();
+            dmxLabels[idx].setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+            dmxLabels[idx].setAlignment(Pos.BASELINE_CENTER);
+            GridPane.setHalignment(dmxLabels[idx], HPos.CENTER);
+            GridPane.setHgrow(dmxLabels[idx], Priority.ALWAYS);
+            GridPane.setValignment(dmxLabels[idx], VPos.CENTER);
+            GridPane.setVgrow(dmxLabels[idx], Priority.ALWAYS);
             dmxLabels[idx].setTextFill(COLOR_TILE_TITLE);
             gridPane.add(dmxLabels[idx], idx % DMX_GRID_COLUMN_COUNT, (int)Math.floor(idx/(double)DMX_GRID_COLUMN_COUNT));
         }
 
         executorService = Executors.newScheduledThreadPool(1);
-        scheduledFuture = executorService.scheduleAtFixedRate(this::updateDmx, 100, 50, TimeUnit.MILLISECONDS);
+        scheduledFuture = executorService.scheduleAtFixedRate(this::updateDmx, 100, 100, TimeUnit.MILLISECONDS);
     }
 
     protected void moveAndScale(GridRect rect)

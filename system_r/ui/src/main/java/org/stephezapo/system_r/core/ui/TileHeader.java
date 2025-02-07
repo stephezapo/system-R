@@ -22,7 +22,7 @@ public class TileHeader extends Pane
     private Label title;
     private Circle closeButton;
 
-    protected TileHeader()
+    protected TileHeader(Tile parent)
     {
         setViewOrder(Double.MAX_VALUE-2);
         setBackground(Background.fill(Style.COLOR_TILE_HEADER));
@@ -45,6 +45,7 @@ public class TileHeader extends Pane
         double radius = SIZE_TILE_HEADER/4.0;
         closeButton = new Circle(SIZE_TILE_HEADER, SIZE_TILE_HEADER/2.0, radius, COLOR_TILE_CLOSE_BUTTON);
         closeButton.setViewOrder(Double.MAX_VALUE-4);
+        closeButton.setOnMouseClicked(mouseEvent -> parent.close());
         getChildren().add(closeButton);
     }
 
