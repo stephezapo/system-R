@@ -1,8 +1,10 @@
 package org.stephezapo.system_r.mvrgdtf;
 
+import org.stephezapo.system_r.mvrgdtf.library.LibraryCreator;
+
 public class Main
 {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        new Thread(new LibraryCreator()).start();
     }
 }
