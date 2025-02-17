@@ -30,7 +30,8 @@ public class LibraryCreator implements Runnable
     @Override
     public void run()
     {
-        String tempDir = "library/temp";
+        String libraryDir = "library";
+        String tempDir = libraryDir + "/temp";
 
         try
         {
@@ -55,10 +56,17 @@ public class LibraryCreator implements Runnable
         for(String gdtfFile : gdtfFiles)
         {
             filesDone += 1;
-            /*try
+            try
             {
-                ZipUtils.UnzipFile(gdtfFile, "");
-            }*/
+                String fileName = gdtfFile.substring(0, gdtfFile.lastIndexOf(".gdtf"));
+                ZipUtils.UnzipFile(tempDir + "/" + gdtfFile, libraryDir + "/" + fileName, "");
+                System.out.println("Unzipped " + gdtfFile + ".");
+            }
+            catch(IOException iex)
+            {
+                System.out.println("Could not unzip " + gdtfFile + ". Skipping.");
+                iex.printStackTrace();
+            }
             progress.set((int)Math.round((100.0*filesDone)/(double)totalFiles));
         }
     }
