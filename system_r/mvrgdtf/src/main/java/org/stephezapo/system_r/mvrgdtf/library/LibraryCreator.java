@@ -7,7 +7,11 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
@@ -16,6 +20,7 @@ public class LibraryCreator implements Runnable
 {
     private boolean running = true;
     private AtomicInteger progress = new AtomicInteger(0);
+    private int totalFiles = 0;
 
     public LibraryCreator()
     {
@@ -25,79 +30,49 @@ public class LibraryCreator implements Runnable
     @Override
     public void run()
     {
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        InputStream is = classloader.getResourceAsStream("mvrgdtf/gdtf_share_library.zip");
-        File outputDir = new File("library");
-
-
+        String tempDir = "library/temp";
 
         try
         {
-            byte[] buffer = new byte[1024];
-            ZipInputStream zis = new ZipInputStream(is);
-            ZipEntry zipEntry = zis.getNextEntry();
-
-            List<ZipEntry> gdtfFiles = new ArrayList<>();
-
-            while (zipEntry != null)
-            {
-                System.out.println(zipEntry.getName());
-                if(zipEntry.getName().endsWith(".gdtf"))
-                {
-                    gdtfFiles.add(zipEntry);
-                }
-                // each zipEntry is a GDTF file (a zip file itself). Other filetypes are not allowed
-                //extractGDTF(zipEntry.get)
-                /*File newFile = newFile(outputDir, zipEntry);
-
-                if (zipEntry.isDirectory())
-                {
-                    continue; // this should actually never happen, we only expect GDTF files in the root folder
-                }
-                else
-                {
-                    // fix for Windows-created archives
-                    File parent = newFile.getParentFile();
-                    if (!parent.isDirectory() && !parent.mkdirs())
-                    {
-                        throw new IOException("Failed to create directory " + parent);
-                    }
-
-                    // write file content
-                    FileOutputStream fos = new FileOutputStream(newFile);
-                    int len;
-                    while ((len = zis.read(buffer)) > 0) {
-                        fos.write(buffer, 0, len);
-                    }
-                    fos.close();
-                }*/
-                zipEntry = zis.getNextEntry();
-            }
-
-            zis.closeEntry();
-            zis.close();
-
-
+            ZipUtils.UnzipFile("./gdtf_share_library.zip", tempDir, "gdtf");
         }
-        catch(Exception ex)
+        catch(IOException iex)
         {
-            ex.printStackTrace();
+            System.err.println("Could not unzip library archive.");
+            iex.printStackTrace();
         }
 
-        File destDir = new File("src/main/resources/unzipTest");
+        Set<String> gdtfFiles = listFiles(tempDir);
+        totalFiles = gdtfFiles.size();
+
+        if(totalFiles==0)
+        {
+            System.out.println("No GDTF files extracted. Done.");
+            return;
+        }
+
+        int filesDone = 0;
+        for(String gdtfFile : gdtfFiles)
+        {
+            filesDone += 1;
+            /*try
+            {
+                ZipUtils.UnzipFile(gdtfFile, "");
+            }*/
+            progress.set((int)Math.round((100.0*filesDone)/(double)totalFiles));
+        }
     }
 
-    private static File newFile(File destinationDir, ZipEntry zipEntry) throws IOException
+    private static Set<String> listFiles(String dir)
     {
-        File destFile = new File(destinationDir, zipEntry.getName());
+        return Stream.of(new File(dir).listFiles())
+            .filter(file -> file.getName().endsWith(".gdtf"))
+            .map(File::getName)
+            .collect(Collectors.toSet());
+    }
 
-        String destDirPath = destinationDir.getCanonicalPath();
-        String destFilePath = destFile.getCanonicalPath();
+    private static void extractGDTF(File gdtfFile)
+    {
 
-        if (!destFilePath.startsWith(destDirPath + File.separator)) {
-            throw new IOException("Entry is outside of the target dir: " + zipEntry.getName());
-        }
-
-        return destFile;
     }
 }
