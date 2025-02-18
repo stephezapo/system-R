@@ -2,20 +2,59 @@ package org.stephezapo.system_r.core;
 
 public class Core
 {
-    private static DmxUniverse dmxUniverse = new DmxUniverse();
+    private final DmxUniverse dmxUniverse = new DmxUniverse();
+    private static Core _instance;
+
+    private boolean running;
+    private IAPI api;
 
     public static void main(String[] args)
     {
-        System.out.println("Hello world!");
-        System.out.println(TheLibrary.sayHello("Stephan"));
+        Get().start();
     }
 
-    public static String sayHelloFromLibrary(String name)
+    public static Core Get()
     {
-        return TheLibrary.sayHello(name);
+        if(_instance == null)
+        {
+            _instance = new Core();
+        }
+
+        return _instance;
     }
 
-    public static byte[] getDmxUniverse()
+    private Core()
+    {
+        api = new API();
+    }
+
+    public IAPI getAPI()
+    {
+        return api;
+    }
+
+    protected void start()
+    {
+        if(running)
+        {
+            return;
+        }
+
+        // TODO: implement startup stuff
+
+        running = true;
+    }
+
+    protected void shutdown()
+    {
+        int error = 0;
+        // TODO: implement shutdown stuff
+
+        running = false;
+        System.exit(error);
+    }
+
+    protected byte[] getDmxUniverse()
     {
         return dmxUniverse.getDmx();
     }

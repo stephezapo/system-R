@@ -10,7 +10,7 @@ public class DmxUniverse
 {
     private ScheduledExecutorService executorService;
     private ScheduledFuture<?> scheduledFuture;
-    private byte[] dmx = new byte[512];
+    private final byte[] dmx = new byte[512];
     public DmxUniverse()
     {
         executorService = Executors.newScheduledThreadPool(1);

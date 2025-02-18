@@ -76,7 +76,7 @@ public class DmxTile extends Tile
 
     private void updateDmx()
     {
-        byte[] dmx = Core.getDmxUniverse();
+        byte[] dmx = Core.Get().getAPI().getSampleDmxData();
 
         Platform.runLater(() -> {
             for(int i = 0; i<512; i++)
