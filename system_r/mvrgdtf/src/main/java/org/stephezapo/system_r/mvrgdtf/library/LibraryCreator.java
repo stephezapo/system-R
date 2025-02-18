@@ -60,7 +60,11 @@ public class LibraryCreator implements Runnable
             {
                 String fileName = gdtfFile.substring(0, gdtfFile.lastIndexOf(".gdtf"));
                 ZipUtils.UnzipFile(tempDir + "/" + gdtfFile, libraryDir + "/" + fileName, "");
-                System.out.println("Unzipped " + gdtfFile + ".");
+
+                // Parse the GDTF's description.xml
+                extractGdtfInfo(libraryDir + "/" + fileName);
+
+                System.out.println("Unzipped and extracted " + gdtfFile + ".");
             }
             catch(IOException iex)
             {
@@ -79,8 +83,10 @@ public class LibraryCreator implements Runnable
             .collect(Collectors.toSet());
     }
 
-    private static void extractGDTF(File gdtfFile)
+    private static String[] extractGdtfInfo(String gdtfFilePath)
     {
+        File xmlFile = new File(gdtfFilePath);
 
+        return new String[]{};
     }
 }
