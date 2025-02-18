@@ -18,6 +18,8 @@ sourceSets {
 }
 
 dependencies {
+    implementation 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.5'
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }

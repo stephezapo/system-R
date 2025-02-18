@@ -1,10 +1,19 @@
 package org.stephezapo.system_r.mvrgdtf.library;
 
+import generated.DMXChannel;
+import generated.DMXMode;
+import generated.FixtureType;
+import generated.GDTF;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,15 +24,19 @@ import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
+import org.stephezapo.system_r.mvrgdtf.library.LibraryData.FixtureTypeInfo;
+import org.stephezapo.system_r.mvrgdtf.library.LibraryData.Mode;
 
 public class LibraryCreator implements Runnable
 {
     private boolean running = true;
     private AtomicInteger progress = new AtomicInteger(0);
     private int totalFiles = 0;
+    private LibraryData data;
 
-    public LibraryCreator()
+    public LibraryCreator(LibraryData data)
     {
+        this.data = data;
         progress.set(0);
     }
 
@@ -73,19 +86,84 @@ public class LibraryCreator implements Runnable
             }
             progress.set((int)Math.round((100.0*filesDone)/(double)totalFiles));
         }
+
+        // clean and remove the temp folder
+        File tempDirFile = new File(tempDir);
+        for (File file: Objects.requireNonNull(tempDirFile.listFiles()))
+        {
+            file.delete();
+        }
+        try
+        {
+            Files.delete(tempDirFile.toPath());
+        }
+        catch (IOException e)
+        {
+            System.err.println("Could not delete temporary directory.");
+            e.printStackTrace();
+        }
+
+        System.out.println("Library extraction done.");
     }
 
     private static Set<String> listFiles(String dir)
     {
         return Stream.of(new File(dir).listFiles())
-            .filter(file -> file.getName().endsWith(".gdtf"))
             .map(File::getName)
+            .filter(name -> name.endsWith(".gdtf"))
             .collect(Collectors.toSet());
     }
 
-    private static String[] extractGdtfInfo(String gdtfFilePath)
+    private String[] extractGdtfInfo(String gdtfFilePath)
     {
-        File xmlFile = new File(gdtfFilePath);
+        try
+        {
+            JAXBContext context = JAXBContext.newInstance(GDTF.class);
+            GDTF gdtf = (GDTF) context.createUnmarshaller().
+                unmarshal(new FileReader(gdtfFilePath + "/description.xml"));
+
+            FixtureType type = gdtf.getFixtureType();
+            FixtureTypeInfo info = new FixtureTypeInfo(type.getManufacturer(), type.getName(), String.valueOf(gdtf.getDataVersion()));
+            for(DMXMode dmxMode : type.getDMXModes().getDMXMode())
+            {
+                // we need to go through all channel functions to get the channel count
+                short maximum = 0;
+
+                for(DMXChannel channel : dmxMode.getDMXChannels().getDMXChannel())
+                {
+                    // Offset is defined by channel numbers separated by a comma
+                    String[] offsetElements = channel.getOffset().split(",");
+                    for(String s : offsetElements)
+                    {
+                        try
+                        {
+                            short channelNumber = Short.parseShort(s);
+                            if(channelNumber>maximum)
+                            {
+                                maximum = channelNumber;
+                            }
+                        }
+                        catch(NumberFormatException nfex)
+                        {
+                            // ignore for now
+                        }
+                    }
+                }
+
+                Mode mode = new Mode(dmxMode.getName(), maximum);
+                info.addMode(mode);
+            }
+
+            data.addFixtureTypeInfo(info);
+        }
+        catch(JAXBException ex)
+        {
+            System.err.println("Could not parse GDTF description.xml. Skipping.");
+        }
+        catch (FileNotFoundException e)
+        {
+            System.err.println("Could not find GDTF description.xml. Skipping.");
+        }
 
         return new String[]{};
     }
