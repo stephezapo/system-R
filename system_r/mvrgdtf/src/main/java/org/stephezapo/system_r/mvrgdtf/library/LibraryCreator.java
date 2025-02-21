@@ -6,6 +6,7 @@ import generated.FixtureType;
 import generated.GDTF;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -24,8 +25,6 @@ import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
-import org.stephezapo.system_r.mvrgdtf.library.LibraryData.FixtureTypeInfo;
-import org.stephezapo.system_r.mvrgdtf.library.LibraryData.Mode;
 
 public class LibraryCreator implements Runnable
 {
@@ -84,7 +83,7 @@ public class LibraryCreator implements Runnable
                 System.out.println("Could not unzip " + gdtfFile + ". Skipping.");
                 iex.printStackTrace();
             }
-            progress.set((int)Math.round((100.0*filesDone)/(double)totalFiles));
+            progress.set((int)Math.round((99.0*filesDone)/(double)totalFiles));
         }
 
         // clean and remove the temp folder
@@ -103,7 +102,18 @@ public class LibraryCreator implements Runnable
             e.printStackTrace();
         }
 
+        progress.set(100);
         System.out.println("Library extraction done.");
+    }
+
+    public int getProgress()
+    {
+        return progress.get();
+    }
+
+    public LibraryData getLibraryData()
+    {
+        return data;
     }
 
     private static Set<String> listFiles(String dir)
@@ -150,7 +160,7 @@ public class LibraryCreator implements Runnable
                     }
                 }
 
-                Mode mode = new Mode(dmxMode.getName(), maximum);
+                FixtureTypeMode mode = new FixtureTypeMode(dmxMode.getName(), maximum);
                 info.addMode(mode);
             }
 

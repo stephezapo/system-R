@@ -1,63 +1,37 @@
 package org.stephezapo.system_r.mvrgdtf.library;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LibraryData
+public class LibraryData implements Serializable
 {
     private Map<String, List<FixtureTypeInfo>> data = new HashMap<>();
 
-    protected LibraryData()
+    public LibraryData()
     {
 
     }
 
+    public Map<String, List<FixtureTypeInfo>> getData()
+    {
+        return data;
+    }
+
     protected void addFixtureTypeInfo(FixtureTypeInfo info)
     {
-        if(!data.containsKey(info.manufacturer))
+        if(!data.containsKey(info.getManufacturer()))
         {
-            data.put(info.manufacturer, new ArrayList<>());
+            data.put(info.getManufacturer(), new ArrayList<>());
         }
 
-        data.get(info.manufacturer).add(info);
+        data.get(info.getManufacturer()).add(info);
     }
 
     protected void clear()
     {
         data.clear();
-    }
-
-    public static class FixtureTypeInfo
-    {
-        private String manufacturer;
-        private String name;
-        private String version;
-        private List<Mode> modes = new ArrayList<>();
-
-        public FixtureTypeInfo(String manufacturer, String name, String version)
-        {
-            this.manufacturer = manufacturer;
-            this.name = name;
-            this.version = version;
-        }
-
-        public void addMode(Mode mode)
-        {
-            modes.add(mode);
-        }
-    }
-
-    public static class Mode
-    {
-        private String name;
-        private short channelCount;
-
-        public Mode(String name, short channelCount)
-        {
-            this.name = name;
-            this.channelCount = channelCount;
-        }
     }
 }

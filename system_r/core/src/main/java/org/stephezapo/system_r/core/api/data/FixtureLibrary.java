@@ -1,23 +1,30 @@
 package org.stephezapo.system_r.core.api.data;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
 
 public class FixtureLibrary
 {
-    private List<String> manufacturers = new ArrayList<>();
-
-    public class Fixture
+    public enum LibraryState
     {
-        private String name;
-        private String manufacturer;
-        private List<FixtureMode> modes = new ArrayList<>();
+        EMPTY,
+        READY,
+        IMPORTING
     }
 
-    public class FixtureMode
+    public static class FixtureLibraryStatus
     {
-        private String name;
-        private String description;
-        private String version;
+        short progress;
+        LibraryState state;
+
+        public FixtureLibraryStatus()
+        {
+            progress = 0;
+            state = LibraryState.EMPTY;
+        }
+    }
+
+    private void loadLibraryDB()
+    {
+
     }
 }

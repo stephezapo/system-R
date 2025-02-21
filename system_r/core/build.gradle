@@ -12,6 +12,8 @@ repositories {
 dependencies {
     implementation project(':thelibrary')
     implementation project(':mvrgdtf')
+    //implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.18.2'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.18.2'
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
