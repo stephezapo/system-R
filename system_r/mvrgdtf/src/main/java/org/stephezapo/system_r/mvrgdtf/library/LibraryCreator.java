@@ -6,25 +6,16 @@ import generated.FixtureType;
 import generated.GDTF;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Marshaller;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-import java.util.zip.ZipInputStream;
 
 public class LibraryCreator implements Runnable
 {
@@ -133,7 +124,8 @@ public class LibraryCreator implements Runnable
                 unmarshal(new FileReader(gdtfFilePath + "/description.xml"));
 
             FixtureType type = gdtf.getFixtureType();
-            FixtureTypeInfo info = new FixtureTypeInfo(type.getManufacturer(), type.getName(), String.valueOf(gdtf.getDataVersion()));
+            FixtureTypeInfo info = new FixtureTypeInfo(type.getManufacturer(), type.getName(),
+                String.valueOf(gdtf.getDataVersion()), gdtfFilePath);
             for(DMXMode dmxMode : type.getDMXModes().getDMXMode())
             {
                 // we need to go through all channel functions to get the channel count

@@ -1,13 +1,16 @@
 package org.stephezapo.system_r.core;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import org.stephezapo.system_r.mvrgdtf.library.LibraryCreator;
-import org.stephezapo.system_r.mvrgdtf.library.LibraryData;
+import java.util.Locale;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.stephezapo.system_r.core.fixtures.FixtureLibrary;
+import org.stephezapo.system_r.core.util.ConfigManager;
+import org.stephezapo.system_r.core.util.DirectoryManager;
 
 public class Core
 {
+    private static Logger logger = LoggerFactory.getLogger(Core.class);
+
     private final DmxUniverse dmxUniverse = new DmxUniverse();
     private static Core _instance;
 
@@ -46,8 +49,14 @@ public class Core
             return;
         }
 
+        ConfigManager.init();
+        setupLogging();
+        DirectoryManager.init();
+        FixtureLibrary.init();
+
+        //logger.info("Library loaded with " + FixtureLibrary.)
         // TODO: implement startup stuff
-        LibraryData data = new LibraryData();
+        /*LibraryData data = new LibraryData();
         LibraryCreator creator = new LibraryCreator(data);
         new Thread(creator).start();
 
@@ -57,24 +66,9 @@ public class Core
         }
 
         System.out.println("Data collected: " + data.getData().size());
-        XmlMapper xmlMapper = new XmlMapper();
-        try
-        {
-            /*String xml = xmlMapper.writeValueAsString(data);
-
-            LibraryData value
-                = xmlMapper.readValue(xml, LibraryData.class);
-            System.out.println(xml);*/
-
-            ObjectMapper mapper = new ObjectMapper();
-            String jsonResult = mapper.writerWithDefaultPrettyPrinter()
-                .writeValueAsString(data.getData());
-            System.out.println(jsonResult);
-        }
-        catch (JsonProcessingException e)
-        {
-            throw new RuntimeException(e);
-        }
+        Serializer.serialize(data, "data/LibraryData.json");
+        LibraryData newData = (LibraryData)Serializer.deserialize("data/LibraryData.json", LibraryData.class);
+        System.out.println("EQUAL: " + (data.equals(newData)));*/
 
         running = true;
     }
@@ -91,5 +85,16 @@ public class Core
     protected byte[] getDmxUniverse()
     {
         return dmxUniverse.getDmx();
+    }
+
+    private void setupLogging()
+    {
+        Locale.setDefault(Locale.ROOT);
+
+        logger.info("Logging INFO");
+        logger.debug("Logging DEBUG");
+        logger.trace("Logging TRACE");
+        logger.warn("Logging WARN");
+        logger.error("Logging ERROR");
     }
 }

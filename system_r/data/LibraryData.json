@@ -1,0 +1,2354 @@
+{
+  "data" : {
+    "Robe Lighting" : [ {
+      "manufacturer" : "Robe Lighting",
+      "name" : "Robin 600 LEDWash",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Robe_Lighting@Robin_600_LEDWash@2024-03-25__Zoom_range_fix",
+      "modes" : [ {
+        "name" : "Mode 1 Extended with all zones 16bit",
+        "channelCount" : 37
+      }, {
+        "name" : "Mode 2 Reduced RGBW Wash 16bit",
+        "channelCount" : 21
+      }, {
+        "name" : "Mode 3 Reduced RGBW Wash 8bit",
+        "channelCount" : 15
+      }, {
+        "name" : "Mode 4 Limited macro colors 8bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 5 Extended all zones at the end 16bit",
+        "channelCount" : 37
+      }, {
+        "name" : "Mode 6 Extended all zones 8bit",
+        "channelCount" : 25
+      } ]
+    }, {
+      "manufacturer" : "Robe Lighting",
+      "name" : "Robin 300 LEDWash",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Robe_Lighting@Robin_300_LEDWash@2024-03-25__Zoom_range_fix",
+      "modes" : [ {
+        "name" : "Mode 1 Extended with all zones 16bit",
+        "channelCount" : 37
+      }, {
+        "name" : "Mode 2 Reduced  RGBW 16bit",
+        "channelCount" : 21
+      }, {
+        "name" : "Mode 3 Reduced RGBW 8bit",
+        "channelCount" : 15
+      }, {
+        "name" : "Mode 4 Limited macro colors 8bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 5 Extended all zones at the end 16bit",
+        "channelCount" : 37
+      } ]
+    }, {
+      "manufacturer" : "Robe Lighting",
+      "name" : "Robin 100 LEDBeam",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Robe_Lighting@Robin_100_LEDBeam@2024-02-09__3D_models_with_robe_color_revision",
+      "modes" : [ {
+        "name" : "Mode 1 Three LED Zones 16bit",
+        "channelCount" : 35
+      }, {
+        "name" : "Mode 2 Beam light 16bit",
+        "channelCount" : 19
+      }, {
+        "name" : "Mode 3 Beam light 8bit",
+        "channelCount" : 14
+      }, {
+        "name" : "Mode 4 Macro colors 8bit",
+        "channelCount" : 9
+      }, {
+        "name" : "Mode 5 Three LED Zones at the end 16bit",
+        "channelCount" : 35
+      }, {
+        "name" : "Mode 6 Compatible with LW600 mode 1",
+        "channelCount" : 37
+      } ]
+    }, {
+      "manufacturer" : "Robe Lighting",
+      "name" : "Robin BMFL FollowSpot",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Robe_Lighting@Robin_BMFL_FollowSpot@2023-06-19__3D_models_revision",
+      "modes" : [ {
+        "name" : "Mode 1 - Standard 16 bit",
+        "channelCount" : 33
+      }, {
+        "name" : "Mode 2 - Reduced 8 bit",
+        "channelCount" : 27
+      } ]
+    }, {
+      "manufacturer" : "Robe Lighting",
+      "name" : "Robin Esprite",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Robe_Lighting@Robin_Esprite@2024-11-13__RDM_personality_revision",
+      "modes" : [ {
+        "name" : "Mode 1 - Standard 16 bit",
+        "channelCount" : 49
+      }, {
+        "name" : "Mode 2 - Reduced 8 bit",
+        "channelCount" : 42
+      }, {
+        "name" : "Mode 3 - Standard 16 bit + green correction",
+        "channelCount" : 50
+      }, {
+        "name" : "Mode 4 - Reduced 8 bit + green correction",
+        "channelCount" : 43
+      }, {
+        "name" : "Mode 5 - Enhanced gobo control",
+        "channelCount" : 51
+      } ]
+    }, {
+      "manufacturer" : "Robe Lighting",
+      "name" : "Robin BMFL WashBeam",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Robe_Lighting@Robin_BMFL_WashBeam@2023-06-21__3D_models_revision",
+      "modes" : [ {
+        "name" : "Mode 1 - Standard 16 bit",
+        "channelCount" : 48
+      }, {
+        "name" : "Mode 2 - Reduced",
+        "channelCount" : 41
+      } ]
+    }, {
+      "manufacturer" : "Robe Lighting",
+      "name" : "Robin 800X LEDWash",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Robe_Lighting@Robin_800X_LEDWash@2024-03-25__3D_models_update__Wiring_revision",
+      "modes" : [ {
+        "name" : "Mode 1 Extended with all zones 16bit",
+        "channelCount" : 38
+      }, {
+        "name" : "Mode 2 Reduced RGBW 16bit",
+        "channelCount" : 22
+      }, {
+        "name" : "Mode 3 Reduced RGBW 8bit",
+        "channelCount" : 16
+      }, {
+        "name" : "Mode 4 Limited macro colors 8bit",
+        "channelCount" : 11
+      }, {
+        "name" : "Mode 5 Extended all zones at the end 16bit",
+        "channelCount" : 38
+      }, {
+        "name" : "Mode 6 All zones without shaper 16bit",
+        "channelCount" : 37
+      } ]
+    } ],
+    "ACME" : [ {
+      "manufacturer" : "ACME",
+      "name" : "ACME XP-260 BEAM",
+      "gdtfVersion" : "1.0",
+      "path" : "library/ACME@ACME_XP-260_BEAM@ACME_XP-260_BEAM",
+      "modes" : [ {
+        "name" : "Mode 1 16 DMX",
+        "channelCount" : 16
+      }, {
+        "name" : "Mode 2 13 DMX",
+        "channelCount" : 13
+      } ]
+    }, {
+      "manufacturer" : "ACME",
+      "name" : "ACME BW-545",
+      "gdtfVersion" : "1.0",
+      "path" : "library/ACME@ACME_BW-545@ACME_BW-545",
+      "modes" : [ {
+        "name" : "Mode 1 7 DMX",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 2 6 DMX",
+        "channelCount" : 6
+      }, {
+        "name" : "Mode 3 5 DMX",
+        "channelCount" : 5
+      }, {
+        "name" : "Mode 4 4 DMX",
+        "channelCount" : 4
+      } ]
+    }, {
+      "manufacturer" : "ACME",
+      "name" : "ACME MP-300Z",
+      "gdtfVersion" : "1.0",
+      "path" : "library/ACME@ACME_MP-300Z@ACME_MP-300Z",
+      "modes" : [ {
+        "name" : "Mode 1 8 DMX",
+        "channelCount" : 8
+      }, {
+        "name" : "Mode 2 6 DMX",
+        "channelCount" : 6
+      }, {
+        "name" : "Mode 3 5 DMX",
+        "channelCount" : 5
+      } ]
+    }, {
+      "manufacturer" : "ACME",
+      "name" : "ACME AM-WASH300",
+      "gdtfVersion" : "1.0",
+      "path" : "library/ACME@ACME_AM-WASH300@ACME_AM-WASH300",
+      "modes" : [ {
+        "name" : "Mode 1 14DMX",
+        "channelCount" : 14
+      }, {
+        "name" : "Mode 2 11DMX",
+        "channelCount" : 11
+      }, {
+        "name" : "Mode 3 15DMX",
+        "channelCount" : 15
+      }, {
+        "name" : "Mode 4 14DMX",
+        "channelCount" : 14
+      } ]
+    } ],
+    "Cameo" : [ {
+      "manufacturer" : "Cameo",
+      "name" : "ZENIT W600",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Cameo@ZENIT_W600@Firmware_V2-60_GDTF_V1-2",
+      "modes" : [ {
+        "name" : "2 CH CCT Factory- Calibrated",
+        "channelCount" : 2
+      }, {
+        "name" : "3 CH Color Presets",
+        "channelCount" : 3
+      }, {
+        "name" : "3 CH Factory- Calibrated 8 Bit",
+        "channelCount" : 3
+      }, {
+        "name" : "4 CH User- Calibrated 8 Bit",
+        "channelCount" : 4
+      }, {
+        "name" : "6 CH Factory- Calibrated 16 Bit",
+        "channelCount" : 6
+      }, {
+        "name" : "8 CH User- Calibrated 16 Bit",
+        "channelCount" : 8
+      }, {
+        "name" : "10 CH Full Area- Access 8 Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "15 CH Full Area- Access 16 Bit",
+        "channelCount" : 15
+      } ]
+    } ],
+    "ADJ" : [ {
+      "manufacturer" : "ADJ",
+      "name" : "Encore Burst 200",
+      "gdtfVersion" : "1.2",
+      "path" : "library/ADJ@Encore_Burst_200@2024-29-10_First_Release",
+      "modes" : [ {
+        "name" : "1CH",
+        "channelCount" : 1
+      }, {
+        "name" : "2CH",
+        "channelCount" : 2
+      }, {
+        "name" : "2ACH",
+        "channelCount" : 2
+      }, {
+        "name" : "3CH",
+        "channelCount" : 3
+      }, {
+        "name" : "4CH",
+        "channelCount" : 4
+      }, {
+        "name" : "6CH",
+        "channelCount" : 6
+      } ]
+    } ],
+    "Trolley" : [ {
+      "manufacturer" : "Trolley",
+      "name" : "Trolley",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Trolley@Trolley@testmode000",
+      "modes" : [ {
+        "name" : "Mode 1",
+        "channelCount" : 1
+      } ]
+    } ],
+    "Elation" : [ {
+      "manufacturer" : "Elation",
+      "name" : "Proteus Hybrid",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Elation@Proteus_Hybrid@2023-25-07_Release",
+      "modes" : [ {
+        "name" : "Basic 540deg",
+        "channelCount" : 24
+      }, {
+        "name" : "Standard 540deg",
+        "channelCount" : 26
+      }, {
+        "name" : "Extended 540deg",
+        "channelCount" : 37
+      }, {
+        "name" : "Extended Mode 630deg",
+        "channelCount" : 37
+      }, {
+        "name" : "Standard 630deg",
+        "channelCount" : 26
+      }, {
+        "name" : "Basic 630deg",
+        "channelCount" : 24
+      } ]
+    }, {
+      "manufacturer" : "Elation",
+      "name" : "FUZE PAR Z175",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Elation@Fuze_Par_Z175@24-21-06_First_Release",
+      "modes" : [ {
+        "name" : "4CH RGBW",
+        "channelCount" : 4
+      }, {
+        "name" : "5CH RGBW",
+        "channelCount" : 5
+      }, {
+        "name" : "5CH2 HSI",
+        "channelCount" : 5
+      }, {
+        "name" : "6CH HIS+",
+        "channelCount" : 6
+      }, {
+        "name" : "7CH RGBW",
+        "channelCount" : 7
+      }, {
+        "name" : "8CH sRGBWI",
+        "channelCount" : 8
+      }, {
+        "name" : "8CH2 RGBW",
+        "channelCount" : 8
+      }, {
+        "name" : "8CH3 RGBW",
+        "channelCount" : 8
+      }, {
+        "name" : "9CH RGBW",
+        "channelCount" : 9
+      }, {
+        "name" : "10CH RGBW",
+        "channelCount" : 10
+      }, {
+        "name" : "10CH2 RGBW",
+        "channelCount" : 10
+      }, {
+        "name" : "11CH RGBW",
+        "channelCount" : 11
+      }, {
+        "name" : "11CH2 16Bit",
+        "channelCount" : 11
+      }, {
+        "name" : "11CH3 HSI",
+        "channelCount" : 11
+      }, {
+        "name" : "12CH 16Bit",
+        "channelCount" : 12
+      }, {
+        "name" : "13CH sRGBWI",
+        "channelCount" : 13
+      }, {
+        "name" : "14CH RGBW",
+        "channelCount" : 14
+      }, {
+        "name" : "15CH RGBW",
+        "channelCount" : 15
+      } ]
+    }, {
+      "manufacturer" : "Elation",
+      "name" : "PROTRON ECLYPSE",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Elation@Protron_Eclypse@23-19-07_Release",
+      "modes" : [ {
+        "name" : "RGB",
+        "channelCount" : 3
+      }, {
+        "name" : "RGB 16bit",
+        "channelCount" : 6
+      }, {
+        "name" : "RGBW",
+        "channelCount" : 4
+      }, {
+        "name" : "RGBW 16bit",
+        "channelCount" : 8
+      }, {
+        "name" : "Strobe",
+        "channelCount" : 4
+      }, {
+        "name" : "1",
+        "channelCount" : 13
+      }, {
+        "name" : " 2V",
+        "channelCount" : 17
+      }, {
+        "name" : "2H",
+        "channelCount" : 17
+      }, {
+        "name" : "3",
+        "channelCount" : 21
+      }, {
+        "name" : " 4",
+        "channelCount" : 25
+      }, {
+        "name" : "4A",
+        "channelCount" : 25
+      }, {
+        "name" : "6",
+        "channelCount" : 33
+      }, {
+        "name" : "6A",
+        "channelCount" : 33
+      }, {
+        "name" : "6H",
+        "channelCount" : 33
+      }, {
+        "name" : "12",
+        "channelCount" : 57
+      }, {
+        "name" : " 12A",
+        "channelCount" : 57
+      }, {
+        "name" : "F1",
+        "channelCount" : 12
+      }, {
+        "name" : "F2V",
+        "channelCount" : 16
+      }, {
+        "name" : "F2H",
+        "channelCount" : 16
+      }, {
+        "name" : "F3",
+        "channelCount" : 20
+      }, {
+        "name" : "F4",
+        "channelCount" : 24
+      }, {
+        "name" : "F6V",
+        "channelCount" : 32
+      }, {
+        "name" : "F6H",
+        "channelCount" : 32
+      }, {
+        "name" : "F12",
+        "channelCount" : 56
+      } ]
+    }, {
+      "manufacturer" : "Elation",
+      "name" : "Fuze Wash Z350",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Elation@Fuze_Wash_Z350@2023-15-05_First_Release",
+      "modes" : [ {
+        "name" : "19 RGBW Pan540",
+        "channelCount" : 19
+      }, {
+        "name" : "17 RGBI Pan540",
+        "channelCount" : 17
+      }, {
+        "name" : "16 HSI Pan540",
+        "channelCount" : 16
+      }, {
+        "name" : "15 RGBW Pan540",
+        "channelCount" : 15
+      }, {
+        "name" : "19 RGBW Pan630",
+        "channelCount" : 19
+      }, {
+        "name" : "17 RGBI  Pan630",
+        "channelCount" : 17
+      }, {
+        "name" : "15 RGBW Pan630",
+        "channelCount" : 15
+      }, {
+        "name" : "16 HSI Pan630",
+        "channelCount" : 16
+      } ]
+    } ],
+    "GSARC" : [ {
+      "manufacturer" : "GSARC",
+      "name" : "DOT S FW",
+      "gdtfVersion" : "1.0",
+      "path" : "library/GSARC@DOT_S_FW@Offical",
+      "modes" : [ {
+        "name" : "1Channel",
+        "channelCount" : 1
+      } ]
+    }, {
+      "manufacturer" : "GSARC",
+      "name" : "DOT M FW",
+      "gdtfVersion" : "1.0",
+      "path" : "library/GSARC@DOT_M_FW@Offical",
+      "modes" : [ {
+        "name" : "1Channel",
+        "channelCount" : 1
+      } ]
+    }, {
+      "manufacturer" : "GSARC",
+      "name" : "DOT S Q",
+      "gdtfVersion" : "1.0",
+      "path" : "library/GSARC@DOT_S_Q@Offical",
+      "modes" : [ {
+        "name" : "4Channel",
+        "channelCount" : 4
+      } ]
+    }, {
+      "manufacturer" : "GSARC",
+      "name" : "DOT L Q",
+      "gdtfVersion" : "1.0",
+      "path" : "library/GSARC@DOT_L_Q@Offical",
+      "modes" : [ {
+        "name" : "4Channel",
+        "channelCount" : 4
+      } ]
+    }, {
+      "manufacturer" : "GSARC",
+      "name" : "DOT L FW",
+      "gdtfVersion" : "1.0",
+      "path" : "library/GSARC@DOT_L_FW@Offical",
+      "modes" : [ {
+        "name" : "1Channel",
+        "channelCount" : 1
+      } ]
+    }, {
+      "manufacturer" : "GSARC",
+      "name" : "DOT M Q",
+      "gdtfVersion" : "1.0",
+      "path" : "library/GSARC@DOT_M_Q@Offical",
+      "modes" : [ {
+        "name" : "4Channel",
+        "channelCount" : 4
+      } ]
+    }, {
+      "manufacturer" : "GSARC",
+      "name" : "DOT L TW",
+      "gdtfVersion" : "1.0",
+      "path" : "library/GSARC@DOT_L_TW@Offical",
+      "modes" : [ {
+        "name" : "2Channel",
+        "channelCount" : 2
+      } ]
+    }, {
+      "manufacturer" : "GSARC",
+      "name" : "DOT M TW",
+      "gdtfVersion" : "1.0",
+      "path" : "library/GSARC@DOT_M_TW@Offical",
+      "modes" : [ {
+        "name" : "2Channel",
+        "channelCount" : 2
+      } ]
+    } ],
+    "GTD lighting" : [ {
+      "manufacturer" : "GTD lighting",
+      "name" : "GTD-1500 N Profiile",
+      "gdtfVersion" : "1.2",
+      "path" : "library/GTD_lighting@GTD-1500_N_Profiile@20221031",
+      "modes" : [ {
+        "name" : "Stadard   35 DMX",
+        "channelCount" : 35
+      }, {
+        "name" : "Basic   32 DMX",
+        "channelCount" : 32
+      } ]
+    } ],
+    "JB-Lighting" : [ {
+      "manufacturer" : "JB-Lighting",
+      "name" : "P12 Profile HP",
+      "gdtfVersion" : "1.2",
+      "path" : "library/JB-Lighting@P12_Profile_HP@V_1.29",
+      "modes" : [ {
+        "name" : "Mode 1 (42 ch)",
+        "channelCount" : 42
+      }, {
+        "name" : "Mode 2 (63 ch)",
+        "channelCount" : 63
+      } ]
+    }, {
+      "manufacturer" : "JB-Lighting",
+      "name" : "Sparx10",
+      "gdtfVersion" : "1.2",
+      "path" : "library/JB-Lighting@Sparx10@V_1.08",
+      "modes" : [ {
+        "name" : "Mode1 (32)",
+        "channelCount" : 32
+      }, {
+        "name" : "Mode2 (44)",
+        "channelCount" : 44
+      }, {
+        "name" : "Mode3 (24)",
+        "channelCount" : 24
+      } ]
+    }, {
+      "manufacturer" : "JB-Lighting",
+      "name" : "P12 Profile HC",
+      "gdtfVersion" : "1.2",
+      "path" : "library/JB-Lighting@P12_Profile_HC@V_1.26",
+      "modes" : [ {
+        "name" : "Mode 1 (42 ch)",
+        "channelCount" : 42
+      }, {
+        "name" : "Mode 2 (63 ch)",
+        "channelCount" : 63
+      } ]
+    }, {
+      "manufacturer" : "JB-Lighting",
+      "name" : "A12",
+      "gdtfVersion" : "1.1",
+      "path" : "library/JB-Lighting@A12@V_1.05",
+      "modes" : [ {
+        "name" : "Standard 8Bit S8 (18)",
+        "channelCount" : 18
+      }, {
+        "name" : "Standard 16Bit S16 (22)",
+        "channelCount" : 22
+      }, {
+        "name" : "Compressed 8 Bit C8 (15)",
+        "channelCount" : 15
+      }, {
+        "name" : "Compressed 16Bit C16 (19)",
+        "channelCount" : 19
+      } ]
+    }, {
+      "manufacturer" : "JB-Lighting",
+      "name" : "A8",
+      "gdtfVersion" : "1.1",
+      "path" : "library/JB-Lighting@A8@V_1.01",
+      "modes" : [ {
+        "name" : "Standard 8Bit S8 (18)",
+        "channelCount" : 18
+      }, {
+        "name" : "Standard 16Bit S16 (22)",
+        "channelCount" : 22
+      }, {
+        "name" : "Compressed 8 Bit C8 (15)",
+        "channelCount" : 15
+      }, {
+        "name" : "Compressed 16Bit C16 (19)",
+        "channelCount" : 19
+      } ]
+    }, {
+      "manufacturer" : "JB-Lighting",
+      "name" : "P12 Profile WW",
+      "gdtfVersion" : "1.2",
+      "path" : "library/JB-Lighting@P12_Profile_WW@V_1.24",
+      "modes" : [ {
+        "name" : "Mode 1 (42 ch)",
+        "channelCount" : 42
+      }, {
+        "name" : "Mode 2 (63 ch)",
+        "channelCount" : 63
+      } ]
+    }, {
+      "manufacturer" : "JB-Lighting",
+      "name" : "P7",
+      "gdtfVersion" : "1.2",
+      "path" : "library/JB-Lighting@P7@V_1.21",
+      "modes" : [ {
+        "name" : "Mode 1",
+        "channelCount" : 26
+      }, {
+        "name" : "Mode 2",
+        "channelCount" : 31
+      }, {
+        "name" : "Mode 3",
+        "channelCount" : 24
+      } ]
+    } ],
+    "MegaLite" : [ {
+      "manufacturer" : "MegaLite",
+      "name" : "Tiltbot Trio",
+      "gdtfVersion" : "1.2",
+      "path" : "library/MegaLite@Tiltbot_Trio@Initial_upload_by_GDTFservice.com,_powered_by_Crescit,_commissioned_by_MegaLite",
+      "modes" : [ {
+        "name" : "3Ch Mode",
+        "channelCount" : 3
+      }, {
+        "name" : "12Ch Mode",
+        "channelCount" : 12
+      }, {
+        "name" : "14Ch Mode",
+        "channelCount" : 14
+      }, {
+        "name" : "23Ch Mode",
+        "channelCount" : 23
+      }, {
+        "name" : "50Ch Mode",
+        "channelCount" : 50
+      }, {
+        "name" : "62Ch Mode",
+        "channelCount" : 62
+      } ]
+    } ],
+    "Martin Professional" : [ {
+      "manufacturer" : "Martin Professional",
+      "name" : "MAC Encore Performance CLD",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Martin_Professional@MAC_Encore_Performance_CLD@20230316NoMeas",
+      "modes" : [ {
+        "name" : "Basic",
+        "channelCount" : 38
+      } ]
+    }, {
+      "manufacturer" : "Martin Professional",
+      "name" : "VC-Grid 15 16x16",
+      "gdtfVersion" : "1.1",
+      "path" : "library/Martin_Professional@VC-Grid_15_16x16@20210126",
+      "modes" : [ {
+        "name" : "DMX_RGB",
+        "channelCount" : 3
+      }, {
+        "name" : "DMX_Pixel",
+        "channelCount" : 192
+      }, {
+        "name" : "P3_Intensity",
+        "channelCount" : 1
+      }, {
+        "name" : "P3_RGB",
+        "channelCount" : 3
+      }, {
+        "name" : "P3_Basic",
+        "channelCount" : 5
+      }, {
+        "name" : "P3_Hybrid 1 Segment",
+        "channelCount" : 6
+      }, {
+        "name" : "P3_Hybrid 2 Segments",
+        "channelCount" : 9
+      }, {
+        "name" : "P3_Hybrid 4 Segments",
+        "channelCount" : 15
+      }, {
+        "name" : "P3_Hybrid 8 Segments",
+        "channelCount" : 27
+      }, {
+        "name" : "P3_Hybrid 16 Segments",
+        "channelCount" : 51
+      }, {
+        "name" : "P3_Hybrid 32 Segments",
+        "channelCount" : 99
+      }, {
+        "name" : "P3_Hybrid 64 Segments",
+        "channelCount" : 195
+      }, {
+        "name" : "P3_Hybrid 128 Segments",
+        "channelCount" : 387
+      }, {
+        "name" : "P3_Hybrid 256 Segments",
+        "channelCount" : 510
+      }, {
+        "name" : "P3_PixelMap 1 Segment",
+        "channelCount" : 3
+      }, {
+        "name" : "P3_PixelMap 2 Segments",
+        "channelCount" : 6
+      }, {
+        "name" : "P3_PixelMap 4 Segments",
+        "channelCount" : 12
+      }, {
+        "name" : "P3_PixelMap 8 Segments",
+        "channelCount" : 24
+      }, {
+        "name" : "P3_PixelMap 16 Segments",
+        "channelCount" : 48
+      }, {
+        "name" : "P3_PixelMap 32 Segments",
+        "channelCount" : 96
+      }, {
+        "name" : "P3_PixelMap 64 Segments",
+        "channelCount" : 192
+      }, {
+        "name" : "P3_PixelMap 128 Segments",
+        "channelCount" : 384
+      }, {
+        "name" : "P3_PixelMap 256 Segments",
+        "channelCount" : 510
+      } ]
+    }, {
+      "manufacturer" : "Martin Professional",
+      "name" : "ERA 300 Profile",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Martin_Professional@ERA_300_Profile@20230226",
+      "modes" : [ {
+        "name" : "Basic",
+        "channelCount" : 21
+      } ]
+    }, {
+      "manufacturer" : "Martin Professional",
+      "name" : "P3 Motion",
+      "gdtfVersion" : "1.1",
+      "path" : "library/Martin_Professional@P3_Motion@20210406",
+      "modes" : [ {
+        "name" : "P3 Motion",
+        "channelCount" : 6
+      } ]
+    }, {
+      "manufacturer" : "Martin Professional",
+      "name" : "MAC Quantum Profile",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Martin_Professional@MAC_Quantum_Profile@20230316NoMeas",
+      "modes" : [ {
+        "name" : "Basic",
+        "channelCount" : 19
+      }, {
+        "name" : "Extended",
+        "channelCount" : 27
+      } ]
+    }, {
+      "manufacturer" : "Martin Professional",
+      "name" : "MAC Aura PXL",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Martin_Professional@MAC_Aura_PXL@20230201",
+      "modes" : [ {
+        "name" : "Compact",
+        "channelCount" : 17
+      }, {
+        "name" : "Basic",
+        "channelCount" : 32
+      }, {
+        "name" : "Extended",
+        "channelCount" : 89
+      }, {
+        "name" : "Ludicrous",
+        "channelCount" : 512
+      } ]
+    }, {
+      "manufacturer" : "Martin Professional",
+      "name" : "P3 Global",
+      "gdtfVersion" : "1.1",
+      "path" : "library/Martin_Professional@P3_Global@20210406",
+      "modes" : [ {
+        "name" : "P3 Global",
+        "channelCount" : 4
+      } ]
+    } ],
+    "Ayrton" : [ {
+      "manufacturer" : "Ayrton",
+      "name" : "Ghibli",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Ayrton@Ghibli@V2.17_ADD_SVG",
+      "modes" : [ {
+        "name" : "Extended_540",
+        "channelCount" : 58
+      }, {
+        "name" : "Standard_540",
+        "channelCount" : 38
+      }, {
+        "name" : "Basic_540",
+        "channelCount" : 36
+      } ]
+    }, {
+      "manufacturer" : "Ayrton",
+      "name" : "AlienPix RS",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Ayrton@AlienPix_RS@V2.6_Add_Modes",
+      "modes" : [ {
+        "name" : "Ex16Bit",
+        "channelCount" : 52
+      }, {
+        "name" : "St16bit",
+        "channelCount" : 32
+      }, {
+        "name" : "St8bit",
+        "channelCount" : 27
+      }, {
+        "name" : "Basic",
+        "channelCount" : 16
+      } ]
+    }, {
+      "manufacturer" : "Ayrton",
+      "name" : "MagicDot R",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Ayrton@MagicDot_R@V2.22_Change_Pan_Default_position",
+      "modes" : [ {
+        "name" : "Standard",
+        "channelCount" : 17
+      } ]
+    }, {
+      "manufacturer" : "Ayrton",
+      "name" : "Diablo",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Ayrton@Diablo@V2.196_ADD_SVG",
+      "modes" : [ {
+        "name" : "Extended_540_S",
+        "channelCount" : 56
+      }, {
+        "name" : "Standard_540_S",
+        "channelCount" : 36
+      }, {
+        "name" : "Basic_540_S",
+        "channelCount" : 34
+      } ]
+    } ],
+    "SGM Light" : [ {
+      "manufacturer" : "SGM Light",
+      "name" : "P-6",
+      "gdtfVersion" : "1.1",
+      "path" : "library/SGM_Light@P-6@Rev_C",
+      "modes" : [ {
+        "name" : "4 Channel RAW",
+        "channelCount" : 4
+      }, {
+        "name" : "6 Channel RAW",
+        "channelCount" : 6
+      }, {
+        "name" : "6 Channel CTC",
+        "channelCount" : 6
+      }, {
+        "name" : "8 Channel RAW",
+        "channelCount" : 8
+      }, {
+        "name" : "9 Channel Strobe",
+        "channelCount" : 9
+      }, {
+        "name" : "10 Channel CTC",
+        "channelCount" : 10
+      }, {
+        "name" : "6x RGB",
+        "channelCount" : 18
+      }, {
+        "name" : "21 Channel CTC",
+        "channelCount" : 21
+      }, {
+        "name" : "24 Channel Strobe",
+        "channelCount" : 24
+      }, {
+        "name" : "26 Channel Strobe",
+        "channelCount" : 26
+      }, {
+        "name" : "27 Channel RAW",
+        "channelCount" : 27
+      }, {
+        "name" : "21 Channel Studio",
+        "channelCount" : 21
+      }, {
+        "name" : "40 Channel CTC",
+        "channelCount" : 40
+      }, {
+        "name" : "66 Channel Studio",
+        "channelCount" : 66
+      } ]
+    } ],
+    "Lightline" : [ {
+      "manufacturer" : "Lightline",
+      "name" : "LaserLink",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Lightline@LaserLink@Gobo_PNGs_added_May_2020",
+      "modes" : [ {
+        "name" : "1Out / RGBO Single Layer",
+        "channelCount" : 32
+      } ]
+    } ],
+    "Prolights" : [ {
+      "manufacturer" : "Prolights",
+      "name" : "ArcPod48Q",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Prolights@ArcPod48Q@Rev_1.9_-_Add_highlight_values",
+      "modes" : [ {
+        "name" : "5ch",
+        "channelCount" : 5
+      }, {
+        "name" : "7ch",
+        "channelCount" : 7
+      }, {
+        "name" : "10ch",
+        "channelCount" : 10
+      }, {
+        "name" : "17ch",
+        "channelCount" : 17
+      }, {
+        "name" : "22ch",
+        "channelCount" : 22
+      } ]
+    }, {
+      "manufacturer" : "Prolights",
+      "name" : "EclDisplayDAT4000Profile",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Prolights@EclDisplayDAT4000Profile@Rev_1.3_-_Snap_disable_on_shutter",
+      "modes" : [ {
+        "name" : "Uno_1ch",
+        "channelCount" : 1
+      }, {
+        "name" : "Basic_2ch",
+        "channelCount" : 2
+      }, {
+        "name" : "Standard_3ch",
+        "channelCount" : 3
+      }, {
+        "name" : "Extended_4ch",
+        "channelCount" : 4
+      } ]
+    }, {
+      "manufacturer" : "Prolights",
+      "name" : "EclDisplayDAT2700Wash25-50",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Prolights@EclDisplayDAT2700Wash25-50@Rev_0.2_-_Snap_disable_on_shutter",
+      "modes" : [ {
+        "name" : "Uno_1ch",
+        "channelCount" : 1
+      }, {
+        "name" : "Basic_2ch",
+        "channelCount" : 2
+      }, {
+        "name" : "Standard_3ch",
+        "channelCount" : 3
+      }, {
+        "name" : "Extended_4ch",
+        "channelCount" : 4
+      } ]
+    }, {
+      "manufacturer" : "Prolights",
+      "name" : "EclDisplayDAT3000Profile",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Prolights@EclDisplayDAT3000Profile@Rev_1.3_-_Snap_disable_on_shutter",
+      "modes" : [ {
+        "name" : "Uno_1ch",
+        "channelCount" : 1
+      }, {
+        "name" : "Basic_2ch",
+        "channelCount" : 2
+      }, {
+        "name" : "Standard_3ch",
+        "channelCount" : 3
+      }, {
+        "name" : "Extended_4ch",
+        "channelCount" : 4
+      } ]
+    }, {
+      "manufacturer" : "Prolights",
+      "name" : "EclDisplayDAT2700Profile",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Prolights@EclDisplayDAT2700Profile@Rev_1.3_-_Snap_disable_on_shutter",
+      "modes" : [ {
+        "name" : "Uno_1ch",
+        "channelCount" : 1
+      }, {
+        "name" : "Basic_2ch",
+        "channelCount" : 2
+      }, {
+        "name" : "Standard_3ch",
+        "channelCount" : 3
+      }, {
+        "name" : "Extended_4ch",
+        "channelCount" : 4
+      } ]
+    }, {
+      "manufacturer" : "Prolights",
+      "name" : "EclDisplayDAT2700Wash15-30",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Prolights@EclDisplayDAT2700Wash15-30@Rev_0.3_-_Snap_disable_on_shutter",
+      "modes" : [ {
+        "name" : "Uno_1ch",
+        "channelCount" : 1
+      }, {
+        "name" : "Basic_2ch",
+        "channelCount" : 2
+      }, {
+        "name" : "Standard_3ch",
+        "channelCount" : 3
+      }, {
+        "name" : "Extended_4ch",
+        "channelCount" : 4
+      } ]
+    }, {
+      "manufacturer" : "Prolights",
+      "name" : "ArcPod96Q",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Prolights@ArcPod96Q@Rev_1.32_-_Add_highlight_values",
+      "modes" : [ {
+        "name" : "8ch",
+        "channelCount" : 8
+      }, {
+        "name" : "10ch",
+        "channelCount" : 10
+      }, {
+        "name" : "14ch",
+        "channelCount" : 14
+      }, {
+        "name" : "20ch",
+        "channelCount" : 20
+      }, {
+        "name" : "34ch",
+        "channelCount" : 34
+      }, {
+        "name" : "44ch",
+        "channelCount" : 44
+      } ]
+    }, {
+      "manufacturer" : "Prolights",
+      "name" : "EclCyclorama050",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Prolights@EclCyclorama050@Rev_1.96_-_up_to_FW_version_1.8_-_All_modes_-_Thumbnail_updated",
+      "modes" : [ {
+        "name" : "1Ch_Theatre",
+        "channelCount" : 1
+      }, {
+        "name" : "2ch_Theatre",
+        "channelCount" : 2
+      }, {
+        "name" : "4ch_Theatre",
+        "channelCount" : 4
+      }, {
+        "name" : "5ch_Theatre",
+        "channelCount" : 5
+      }, {
+        "name" : "6ch_Theatre",
+        "channelCount" : 6
+      }, {
+        "name" : "10ch_Theatre",
+        "channelCount" : 10
+      }, {
+        "name" : "15ch_Theatre",
+        "channelCount" : 15
+      }, {
+        "name" : "17ch_Theatre",
+        "channelCount" : 17
+      }, {
+        "name" : "21ch_Theater",
+        "channelCount" : 21
+      }, {
+        "name" : "4ch_Tour",
+        "channelCount" : 4
+      }, {
+        "name" : "6ch_Tour",
+        "channelCount" : 6
+      }, {
+        "name" : "10ch_Tour",
+        "channelCount" : 10
+      }, {
+        "name" : "15ch_Tour",
+        "channelCount" : 15
+      }, {
+        "name" : "12ch_Film",
+        "channelCount" : 12
+      }, {
+        "name" : "20ch_Film",
+        "channelCount" : 20
+      }, {
+        "name" : "XY17ch_Film",
+        "channelCount" : 17
+      } ]
+    }, {
+      "manufacturer" : "Prolights",
+      "name" : "EclCyclorama100",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Prolights@EclCyclorama100@Rev_1.97_-_up_to_FW_version_1.8_-_All_Modes,_Thumbnail_updated",
+      "modes" : [ {
+        "name" : "1Ch_Theatre",
+        "channelCount" : 1
+      }, {
+        "name" : "2ch_Theatre",
+        "channelCount" : 2
+      }, {
+        "name" : "4ch_Theatre",
+        "channelCount" : 4
+      }, {
+        "name" : "5ch_Theatre",
+        "channelCount" : 5
+      }, {
+        "name" : "6ch_Theatre",
+        "channelCount" : 6
+      }, {
+        "name" : "10ch_Theatre",
+        "channelCount" : 10
+      }, {
+        "name" : "15ch_Theatre",
+        "channelCount" : 15
+      }, {
+        "name" : "17ch_Theatre",
+        "channelCount" : 17
+      }, {
+        "name" : "21ch_Theater",
+        "channelCount" : 21
+      }, {
+        "name" : "4ch_Tour",
+        "channelCount" : 4
+      }, {
+        "name" : "6ch_Tour",
+        "channelCount" : 6
+      }, {
+        "name" : "10ch_Tour",
+        "channelCount" : 10
+      }, {
+        "name" : "15ch_Tour",
+        "channelCount" : 15
+      }, {
+        "name" : "12ch_Film",
+        "channelCount" : 12
+      }, {
+        "name" : "20ch_Film",
+        "channelCount" : 20
+      }, {
+        "name" : "XY17ch_Film",
+        "channelCount" : 17
+      } ]
+    }, {
+      "manufacturer" : "Prolights",
+      "name" : "EclDisplayDAT3000Wash15-30",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Prolights@EclDisplayDAT3000Wash15-30@Rev_0.2_-_Snap_disable_on_shutter",
+      "modes" : [ {
+        "name" : "Uno_1ch",
+        "channelCount" : 1
+      }, {
+        "name" : "Basic_2ch",
+        "channelCount" : 2
+      }, {
+        "name" : "Standard_3ch",
+        "channelCount" : 3
+      }, {
+        "name" : "Extended_4ch",
+        "channelCount" : 4
+      } ]
+    }, {
+      "manufacturer" : "Prolights",
+      "name" : "EclDisplayDAT3000Wash25-50",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Prolights@EclDisplayDAT3000Wash25-50@Rev_0.3_-_Snap_disable_on_shutter",
+      "modes" : [ {
+        "name" : "Uno_1ch",
+        "channelCount" : 1
+      }, {
+        "name" : "Basic_2ch",
+        "channelCount" : 2
+      }, {
+        "name" : "Standard_3ch",
+        "channelCount" : 3
+      }, {
+        "name" : "Extended_4ch",
+        "channelCount" : 4
+      } ]
+    }, {
+      "manufacturer" : "Prolights",
+      "name" : "AstraBeam260IP",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Prolights@AstraBeam260IP@Rev_0.27_-_Geometry_reduced,_Highlight_and_Snap_fixed,_NoFeature_for_duplicated_functions",
+      "modes" : [ {
+        "name" : "17ch",
+        "channelCount" : 17
+      } ]
+    } ],
+    "Terbly" : [ {
+      "manufacturer" : "Terbly",
+      "name" : "ELV-G1-RGB",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@ELV-G1-RGB@Offical",
+      "modes" : [ {
+        "name" : "3Channel",
+        "channelCount" : 3
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "ELV-G1-RGBW",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@ELV-G1-RGBW@Offical",
+      "modes" : [ {
+        "name" : "4Channel",
+        "channelCount" : 4
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "T180C 26Deg",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@T180C_26Deg@Offical",
+      "modes" : [ {
+        "name" : "5Channel",
+        "channelCount" : 5
+      }, {
+        "name" : "6Channel",
+        "channelCount" : 6
+      }, {
+        "name" : "8Channel",
+        "channelCount" : 8
+      }, {
+        "name" : "13Channel",
+        "channelCount" : 13
+      }, {
+        "name" : "19Channel",
+        "channelCount" : 19
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "A51-E",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@A51-E@Offical",
+      "modes" : [ {
+        "name" : "Standard",
+        "channelCount" : 29
+      }, {
+        "name" : "Basic",
+        "channelCount" : 16
+      }, {
+        "name" : "Extended",
+        "channelCount" : 38
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "T90H-CW IP 26Deg",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@T90H-CW_IP_26Deg@Offical",
+      "modes" : [ {
+        "name" : "3Channel",
+        "channelCount" : 3
+      }, {
+        "name" : "6Channel",
+        "channelCount" : 6
+      }, {
+        "name" : "8Channel",
+        "channelCount" : 8
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "BPAR5QB-R",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@BPAR5QB-R@Offical",
+      "modes" : [ {
+        "name" : "4Channel",
+        "channelCount" : 4
+      }, {
+        "name" : "5Channel",
+        "channelCount" : 5
+      }, {
+        "name" : "7Channel",
+        "channelCount" : 7
+      }, {
+        "name" : "9Channel",
+        "channelCount" : 9
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "BPAR3Q-R",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@BPAR3Q-R@Offical",
+      "modes" : [ {
+        "name" : "4Channel",
+        "channelCount" : 4
+      }, {
+        "name" : "5Channel",
+        "channelCount" : 5
+      }, {
+        "name" : "7Channel",
+        "channelCount" : 7
+      }, {
+        "name" : "9Channel",
+        "channelCount" : 9
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "F90-WW",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@F90-WW@Offical",
+      "modes" : [ {
+        "name" : "6Channel",
+        "channelCount" : 6
+      }, {
+        "name" : "3Channel",
+        "channelCount" : 3
+      }, {
+        "name" : "2Channel",
+        "channelCount" : 2
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "TP01WW",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@TP01WW@Offical",
+      "modes" : [ {
+        "name" : "3Channel",
+        "channelCount" : 3
+      }, {
+        "name" : "1Channel",
+        "channelCount" : 1
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "T200C IP 26Deg",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@T200C_IP_26Deg@Offical",
+      "modes" : [ {
+        "name" : "12Channel",
+        "channelCount" : 12
+      }, {
+        "name" : "13Channel",
+        "channelCount" : 13
+      }, {
+        "name" : "18Channel",
+        "channelCount" : 18
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "GL3WP",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@GL3WP@Offical",
+      "modes" : [ {
+        "name" : "Standard",
+        "channelCount" : 28
+      }, {
+        "name" : "Basic",
+        "channelCount" : 26
+      }, {
+        "name" : "Extended",
+        "channelCount" : 41
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "TP01CW",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@TP01CW@Offical",
+      "modes" : [ {
+        "name" : "3Channel",
+        "channelCount" : 3
+      }, {
+        "name" : "1Channel",
+        "channelCount" : 1
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "A51C",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@A51C@Offical",
+      "modes" : [ {
+        "name" : "Standard",
+        "channelCount" : 25
+      }, {
+        "name" : "Basic",
+        "channelCount" : 13
+      }, {
+        "name" : "Extended",
+        "channelCount" : 34
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "ELV-G4-RGBW",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@ELV-G4-RGBW@Offical",
+      "modes" : [ {
+        "name" : "4Channel",
+        "channelCount" : 4
+      }, {
+        "name" : "16Channel",
+        "channelCount" : 16
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "F250",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@F250@Offical",
+      "modes" : [ {
+        "name" : "7Channel",
+        "channelCount" : 7
+      }, {
+        "name" : "3Channel",
+        "channelCount" : 3
+      }, {
+        "name" : "2Channel",
+        "channelCount" : 2
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "ELV-G4-RGB",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@ELV-G4-RGB@Offical",
+      "modes" : [ {
+        "name" : "3Channel",
+        "channelCount" : 3
+      }, {
+        "name" : "12Channel",
+        "channelCount" : 12
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "T90H-WW IP 26Deg",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@T90H-WW_IP_26Deg@Offical",
+      "modes" : [ {
+        "name" : "3Channel",
+        "channelCount" : 3
+      }, {
+        "name" : "6Channel",
+        "channelCount" : 6
+      }, {
+        "name" : "8Channel",
+        "channelCount" : 8
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "C5",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@C5@Offical",
+      "modes" : [ {
+        "name" : "12Channel",
+        "channelCount" : 12
+      }, {
+        "name" : "20Channel",
+        "channelCount" : 20
+      }, {
+        "name" : "28Channel",
+        "channelCount" : 28
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "F90-CW",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@F90-CW@Offical",
+      "modes" : [ {
+        "name" : "6Channel",
+        "channelCount" : 6
+      }, {
+        "name" : "3Channel",
+        "channelCount" : 3
+      }, {
+        "name" : "2Channel",
+        "channelCount" : 2
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "LPAR 1Q",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@LPAR_1Q@Offical",
+      "modes" : [ {
+        "name" : "4Channel",
+        "channelCount" : 4
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "GL5",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@GL5@Offical",
+      "modes" : [ {
+        "name" : "Standard",
+        "channelCount" : 30
+      }, {
+        "name" : "Basic",
+        "channelCount" : 28
+      }, {
+        "name" : "Extended",
+        "channelCount" : 42
+      } ]
+    }, {
+      "manufacturer" : "Terbly",
+      "name" : "G14B IP",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Terbly@G14B_IP@Offical",
+      "modes" : [ {
+        "name" : "Standard",
+        "channelCount" : 19
+      }, {
+        "name" : "Basic",
+        "channelCount" : 17
+      }, {
+        "name" : "Extended",
+        "channelCount" : 28
+      } ]
+    } ],
+    "ARRI" : [ {
+      "manufacturer" : "ARRI",
+      "name" : "SkyPanel S30C",
+      "gdtfVersion" : "1.1",
+      "path" : "library/ARRI@SkyPanel_S30C@DMX_v4.4_13_Jan_2021",
+      "modes" : [ {
+        "name" : "Mode 1  CCT+RGBW 8Bit",
+        "channelCount" : 12
+      }, {
+        "name" : "Mode 1  CCT+RGBW ECC 8Bit ",
+        "channelCount" : 20
+      }, {
+        "name" : "Mode 2 - CCT 8Bit ",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 2 - CCT ECC 8Bit",
+        "channelCount" : 15
+      }, {
+        "name" : "Mode 3 - CCT+HSI 8Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 3 - CCT+HSI ECC 8Bit",
+        "channelCount" : 18
+      }, {
+        "name" : "Mode 4 - RGBW 8Bit",
+        "channelCount" : 9
+      }, {
+        "name" : "Mode 4 - RGBW ECC 8Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 5- HSI 8Bit",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 5- HSI ECC 8Bit",
+        "channelCount" : 15
+      }, {
+        "name" : "Mode 6  - CCT+RGBW 16Bit",
+        "channelCount" : 20
+      }, {
+        "name" : "Mode 6  - CCT+RGBW ECC 16Bit",
+        "channelCount" : 36
+      }, {
+        "name" : "Mode 7 - CCT 16Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 7 - CCT ECC 16Bit",
+        "channelCount" : 26
+      }, {
+        "name" : "Mode 8 - CCT+HSI 16Bit",
+        "channelCount" : 16
+      }, {
+        "name" : "Mode 8 - CCT+HSI ECC 16Bit",
+        "channelCount" : 32
+      }, {
+        "name" : "Mode 9 - RGBW 16Bit",
+        "channelCount" : 14
+      }, {
+        "name" : "Mode 9 - RGBW ECC 16Bit",
+        "channelCount" : 30
+      }, {
+        "name" : "Mode 10 - HSI 16Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 10 - HSI ECC 16Bit",
+        "channelCount" : 26
+      }, {
+        "name" : "Mode 16 - Gels 8Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 16 - Gels ECC 8Bit",
+        "channelCount" : 25
+      }, {
+        "name" : "Mode 17 - Gels 16Bit",
+        "channelCount" : 19
+      }, {
+        "name" : "Mode 17 - Gels ECC 16Bit",
+        "channelCount" : 35
+      }, {
+        "name" : "Mode 18 - XY 8Bit",
+        "channelCount" : 11
+      }, {
+        "name" : "Mode 18 - XY ECC 8Bit",
+        "channelCount" : 19
+      }, {
+        "name" : "Mode 19 - XY 16Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 19 - XY ECC 16Bit",
+        "channelCount" : 33
+      }, {
+        "name" : "Mode 20 - Source Match 8Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 20 - Source Match ECC 8Bit",
+        "channelCount" : 18
+      }, {
+        "name" : "Mode 21 - Source Match 16Bit",
+        "channelCount" : 12
+      }, {
+        "name" : "Mode 21 - Source Match ECC 16Bit",
+        "channelCount" : 28
+      }, {
+        "name" : "Mode 22 - Effects 8Bit",
+        "channelCount" : 13
+      }, {
+        "name" : "Mode 22 - Effects ECC 8Bit",
+        "channelCount" : 21
+      }, {
+        "name" : "Mode 23 - Effects 16Bit",
+        "channelCount" : 21
+      }, {
+        "name" : "Mode 23 - Effects ECC 16Bit",
+        "channelCount" : 37
+      }, {
+        "name" : "Mode 24 -  LE CCT+RGBW 8Bit",
+        "channelCount" : 9
+      }, {
+        "name" : "Mode 25 - LE CCT+RGBW 16Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 26 -  LE HSI 8Bit",
+        "channelCount" : 4
+      }, {
+        "name" : "Mode 27-  LE HSI 16Bit",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 28 - LE XY 8Bit",
+        "channelCount" : 4
+      }, {
+        "name" : "Mode 29 - LE XY 16Bit",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 30 - Ultimate 8Bit",
+        "channelCount" : 24
+      }, {
+        "name" : "Mode 30 - Ultimate ECC 8Bit",
+        "channelCount" : 32
+      } ]
+    }, {
+      "manufacturer" : "ARRI",
+      "name" : "SkyPanel S60RP",
+      "gdtfVersion" : "1.1",
+      "path" : "library/ARRI@SkyPanel_S60RP@DMX_v4.4_13_Jan_2021",
+      "modes" : [ {
+        "name" : "Mode 1 - Intensity 8Bit",
+        "channelCount" : 5
+      }, {
+        "name" : "Mode 2 - Intensity16Bit",
+        "channelCount" : 6
+      } ]
+    }, {
+      "manufacturer" : "ARRI",
+      "name" : "Orbiter",
+      "gdtfVersion" : "1.1",
+      "path" : "library/ARRI@Orbiter@DMX_v4.5_29_Dec_Standard_and_ECC",
+      "modes" : [ {
+        "name" : "Mode 1 - CCT+RGBACL 8Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 1 - CCT+RGBACL ECC 8Bit ",
+        "channelCount" : 25
+      }, {
+        "name" : "Mode 1 - CCT+RGBW(Cal) 8Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 1 - CCT+RGBW(Cal) ECC 8Bit",
+        "channelCount" : 25
+      }, {
+        "name" : "Mode 2 - CCT 8Bit",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 2 - CCT ECC 8Bit",
+        "channelCount" : 15
+      }, {
+        "name" : "Mode 3 - CCT+HSI 8Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 3 - CCT+HSI ECC 8Bit",
+        "channelCount" : 18
+      }, {
+        "name" : "Mode 4 - RGBACL 8Bit",
+        "channelCount" : 14
+      }, {
+        "name" : "Mode 4 - RGBACL ECC 8Bit",
+        "channelCount" : 22
+      }, {
+        "name" : "Mode 4 - RGBW(Cal) 8Bit",
+        "channelCount" : 14
+      }, {
+        "name" : "Mode 4 - RGBW(Cal) ECC 8Bit",
+        "channelCount" : 22
+      }, {
+        "name" : "Mode 5 - HSI 8Bit",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 5 - HSI ECC 8Bit",
+        "channelCount" : 15
+      }, {
+        "name" : "Mode 6  - CCT+RGBACL 16Bit",
+        "channelCount" : 30
+      }, {
+        "name" : "Mode 6  - CCT+RGBACL ECC 16Bit",
+        "channelCount" : 46
+      }, {
+        "name" : "Mode 6  - CCT+RGBW(Cal) 16Bit",
+        "channelCount" : 30
+      }, {
+        "name" : "Mode 6  - CCT+RGBW(Cal) ECC 16Bit",
+        "channelCount" : 46
+      }, {
+        "name" : "Mode 7 - CCT 16Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 7 - CCT ECC 16Bit",
+        "channelCount" : 26
+      }, {
+        "name" : "Mode 8 - CCT+HSI 16Bit",
+        "channelCount" : 16
+      }, {
+        "name" : "Mode 8 - CCT+HSI ECC 16Bit",
+        "channelCount" : 32
+      }, {
+        "name" : "Mode 9 - RGBACL 16Bit",
+        "channelCount" : 24
+      }, {
+        "name" : "Mode 9 - RGBACL ECC 16Bit",
+        "channelCount" : 40
+      }, {
+        "name" : "Mode 9 - RGBW(Cal) 16Bit",
+        "channelCount" : 24
+      }, {
+        "name" : "Mode 9 - RGBW(Cal) ECC 16Bit",
+        "channelCount" : 40
+      }, {
+        "name" : "Mode 10 - HSI 16Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 10 - HSI ECC 16Bit",
+        "channelCount" : 26
+      }, {
+        "name" : "Mode 11 - Gels 8Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 11 - Gels ECC 8Bit",
+        "channelCount" : 18
+      }, {
+        "name" : "Mode 12 - Gels 16Bit",
+        "channelCount" : 12
+      }, {
+        "name" : "Mode 12 - Gels ECC 16Bit",
+        "channelCount" : 28
+      }, {
+        "name" : "Mode 13 - XY 8Bit",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 13 - XY ECC 8Bit",
+        "channelCount" : 15
+      }, {
+        "name" : "Mode 14 - XY 16Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 14 - XY ECC 16Bit",
+        "channelCount" : 26
+      }, {
+        "name" : "Mode 15 - Source Match 8Bit",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 15 - Source Match ECC 8Bit",
+        "channelCount" : 15
+      }, {
+        "name" : "Mode 16 - Source Match 16Bit",
+        "channelCount" : 8
+      }, {
+        "name" : "Mode 16 - Source Match ECC 16Bit",
+        "channelCount" : 24
+      }, {
+        "name" : "Mode 17 - Effects 8Bit",
+        "channelCount" : 14
+      }, {
+        "name" : "Mode 17 - Effects ECC 8Bit",
+        "channelCount" : 22
+      }, {
+        "name" : "Mode 18 - Effects 16Bit",
+        "channelCount" : 23
+      }, {
+        "name" : "Mode 18 - Effects ECC 16Bit",
+        "channelCount" : 39
+      }, {
+        "name" : "Mode 19 - Ultimate 8Bit",
+        "channelCount" : 26
+      }, {
+        "name" : "Mode 19 - Ultimate ECC 8Bit",
+        "channelCount" : 34
+      }, {
+        "name" : "Mode 19 - Ultimate(Cal) 8Bit",
+        "channelCount" : 26
+      }, {
+        "name" : "Mode 19 - Ultimate(Cal) ECC 8Bit",
+        "channelCount" : 34
+      }, {
+        "name" : "Mode 20 - Ultimate 16Bit",
+        "channelCount" : 46
+      }, {
+        "name" : "Mode 20 - Ultimate ECC 16Bit",
+        "channelCount" : 62
+      }, {
+        "name" : "Mode 20 - Ultimate(Cal) 16Bit",
+        "channelCount" : 46
+      }, {
+        "name" : "Mode 20 - Ultimate(Cal) ECC 16Bit",
+        "channelCount" : 62
+      } ]
+    }, {
+      "manufacturer" : "ARRI",
+      "name" : "SkyPanel S120C",
+      "gdtfVersion" : "1.1",
+      "path" : "library/ARRI@SkyPanel_S120C@DMX_v4.4_13_Jan_2021",
+      "modes" : [ {
+        "name" : "Mode 1  CCT+RGBW 8Bit",
+        "channelCount" : 12
+      }, {
+        "name" : "Mode 1  CCT+RGBW ECC 8Bit ",
+        "channelCount" : 20
+      }, {
+        "name" : "Mode 2 - CCT 8Bit ",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 2 - CCT ECC 8Bit",
+        "channelCount" : 15
+      }, {
+        "name" : "Mode 3 - CCT+HSI 8Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 3 - CCT+HSI ECC 8Bit",
+        "channelCount" : 18
+      }, {
+        "name" : "Mode 4 - RGBW 8Bit",
+        "channelCount" : 9
+      }, {
+        "name" : "Mode 4 - RGBW ECC 8Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 5- HSI 8Bit",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 5- HSI ECC 8Bit",
+        "channelCount" : 15
+      }, {
+        "name" : "Mode 6  - CCT+RGBW 16Bit",
+        "channelCount" : 20
+      }, {
+        "name" : "Mode 6  - CCT+RGBW ECC 16Bit",
+        "channelCount" : 36
+      }, {
+        "name" : "Mode 7 - CCT 16Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 7 - CCT ECC 16Bit",
+        "channelCount" : 26
+      }, {
+        "name" : "Mode 8 - CCT+HSI 16Bit",
+        "channelCount" : 16
+      }, {
+        "name" : "Mode 8 - CCT+HSI ECC 16Bit",
+        "channelCount" : 32
+      }, {
+        "name" : "Mode 9 - RGBW 16Bit",
+        "channelCount" : 14
+      }, {
+        "name" : "Mode 9 - RGBW ECC 16Bit",
+        "channelCount" : 30
+      }, {
+        "name" : "Mode 10 - HSI 16Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 10 - HSI ECC 16Bit",
+        "channelCount" : 26
+      }, {
+        "name" : "Mode 16 - Gels 8Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 16 - Gels ECC 8Bit",
+        "channelCount" : 25
+      }, {
+        "name" : "Mode 17 - Gels 16Bit",
+        "channelCount" : 19
+      }, {
+        "name" : "Mode 17 - Gels ECC 16Bit",
+        "channelCount" : 35
+      }, {
+        "name" : "Mode 18 - XY 8Bit",
+        "channelCount" : 11
+      }, {
+        "name" : "Mode 18 - XY ECC 8Bit",
+        "channelCount" : 19
+      }, {
+        "name" : "Mode 19 - XY 16Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 19 - XY ECC 16Bit",
+        "channelCount" : 33
+      }, {
+        "name" : "Mode 20 - Source Match 8Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 20 - Source Match ECC 8Bit",
+        "channelCount" : 18
+      }, {
+        "name" : "Mode 21 - Source Match 16Bit",
+        "channelCount" : 12
+      }, {
+        "name" : "Mode 21 - Source Match ECC 16Bit",
+        "channelCount" : 28
+      }, {
+        "name" : "Mode 22 - Effects 8Bit",
+        "channelCount" : 13
+      }, {
+        "name" : "Mode 22 - Effects ECC 8Bit",
+        "channelCount" : 21
+      }, {
+        "name" : "Mode 23 - Effects 16Bit",
+        "channelCount" : 21
+      }, {
+        "name" : "Mode 23 - Effects ECC 16Bit",
+        "channelCount" : 37
+      }, {
+        "name" : "Mode 24 -  LE CCT+RGBW 8Bit",
+        "channelCount" : 33
+      }, {
+        "name" : "Mode 25 - LE CCT+RGBW 16Bit",
+        "channelCount" : 65
+      }, {
+        "name" : "Mode 26 -  LE HSI 8Bit",
+        "channelCount" : 13
+      }, {
+        "name" : "Mode 27-  LE HSI 16Bit",
+        "channelCount" : 25
+      }, {
+        "name" : "Mode 28 - LE XY 8Bit",
+        "channelCount" : 13
+      }, {
+        "name" : "Mode 29 - LE XY 16Bit",
+        "channelCount" : 25
+      }, {
+        "name" : "Mode 30 - Ultimate 8Bit",
+        "channelCount" : 24
+      }, {
+        "name" : "Mode 30 - Ultimate ECC 8Bit",
+        "channelCount" : 32
+      } ]
+    }, {
+      "manufacturer" : "ARRI",
+      "name" : "SkyPanel S360C",
+      "gdtfVersion" : "1.1",
+      "path" : "library/ARRI@SkyPanel_S360C@DMX_v4.4_13_Jan_2021",
+      "modes" : [ {
+        "name" : "Mode 1  CCT+RGBW 8Bit",
+        "channelCount" : 12
+      }, {
+        "name" : "Mode 1  CCT+RGBW ECC 8Bit ",
+        "channelCount" : 20
+      }, {
+        "name" : "Mode 2 - CCT 8Bit ",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 2 - CCT ECC 8Bit",
+        "channelCount" : 15
+      }, {
+        "name" : "Mode 3 - CCT+HSI 8Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 3 - CCT+HSI ECC 8Bit",
+        "channelCount" : 18
+      }, {
+        "name" : "Mode 4 - RGBW 8Bit",
+        "channelCount" : 9
+      }, {
+        "name" : "Mode 4 - RGBW ECC 8Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 5- HSI 8Bit",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 5- HSI ECC 8Bit",
+        "channelCount" : 15
+      }, {
+        "name" : "Mode 6  - CCT+RGBW 16Bit",
+        "channelCount" : 20
+      }, {
+        "name" : "Mode 6  - CCT+RGBW ECC 16Bit",
+        "channelCount" : 36
+      }, {
+        "name" : "Mode 7 - CCT 16Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 7 - CCT ECC 16Bit",
+        "channelCount" : 26
+      }, {
+        "name" : "Mode 8 - CCT+HSI 16Bit",
+        "channelCount" : 16
+      }, {
+        "name" : "Mode 8 - CCT+HSI ECC 16Bit",
+        "channelCount" : 32
+      }, {
+        "name" : "Mode 9 - RGBW 16Bit",
+        "channelCount" : 14
+      }, {
+        "name" : "Mode 9 - RGBW ECC 16Bit",
+        "channelCount" : 30
+      }, {
+        "name" : "Mode 10 - HSI 16Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 10 - HSI ECC 16Bit",
+        "channelCount" : 26
+      }, {
+        "name" : "Mode 16 - Gels 8Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 16 - Gels ECC 8Bit",
+        "channelCount" : 25
+      }, {
+        "name" : "Mode 17 - Gels 16Bit",
+        "channelCount" : 19
+      }, {
+        "name" : "Mode 17 - Gels ECC 16Bit",
+        "channelCount" : 35
+      }, {
+        "name" : "Mode 18 - XY 8Bit",
+        "channelCount" : 11
+      }, {
+        "name" : "Mode 18 - XY ECC 8Bit",
+        "channelCount" : 19
+      }, {
+        "name" : "Mode 19 - XY 16Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 19 - XY ECC 16Bit",
+        "channelCount" : 33
+      }, {
+        "name" : "Mode 20 - Source Match 8Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 20 - Source Match ECC 8Bit",
+        "channelCount" : 18
+      }, {
+        "name" : "Mode 21 - Source Match 16Bit",
+        "channelCount" : 12
+      }, {
+        "name" : "Mode 21 - Source Match ECC 16Bit",
+        "channelCount" : 28
+      }, {
+        "name" : "Mode 22 - Effects 8Bit",
+        "channelCount" : 13
+      }, {
+        "name" : "Mode 22 - Effects ECC 8Bit",
+        "channelCount" : 21
+      }, {
+        "name" : "Mode 23 - Effects 16Bit",
+        "channelCount" : 21
+      }, {
+        "name" : "Mode 23 - Effects ECC 16Bit",
+        "channelCount" : 37
+      }, {
+        "name" : "Mode 24 -  LE CCT+RGBW 8Bit",
+        "channelCount" : 97
+      }, {
+        "name" : "Mode 25 - LE CCT+RGBW 16Bit",
+        "channelCount" : 193
+      }, {
+        "name" : "Mode 26 -  LE HSI 8Bit",
+        "channelCount" : 37
+      }, {
+        "name" : "Mode 27-  LE HSI 16Bit",
+        "channelCount" : 73
+      }, {
+        "name" : "Mode 28 - LE XY 8Bit",
+        "channelCount" : 37
+      }, {
+        "name" : "Mode 29 - LE XY 16Bit",
+        "channelCount" : 73
+      }, {
+        "name" : "Mode 30 - Ultimate 8Bit",
+        "channelCount" : 24
+      }, {
+        "name" : "Mode 30 - Ultimate ECC 8Bit",
+        "channelCount" : 32
+      } ]
+    }, {
+      "manufacturer" : "ARRI",
+      "name" : "L7C",
+      "gdtfVersion" : "1.1",
+      "path" : "library/ARRI@L7C@DMX_v3.5_13_Jan_2021",
+      "modes" : [ {
+        "name" : "Mode 1 CCT+RGBW 8Bit",
+        "channelCount" : 8
+      }, {
+        "name" : "Mode 2 CCT 8Bit",
+        "channelCount" : 3
+      }, {
+        "name" : "Mode 3 CCT+HSI 8Bit ",
+        "channelCount" : 6
+      }, {
+        "name" : "Mode 4 RGBW 8Bit",
+        "channelCount" : 5
+      }, {
+        "name" : "Mode 5 HSI 8Bit",
+        "channelCount" : 3
+      }, {
+        "name" : "Mode 6 CCT+RGBW 16Bit",
+        "channelCount" : 16
+      }, {
+        "name" : "Mode 7 CCT 16Bit ",
+        "channelCount" : 6
+      }, {
+        "name" : "Mode 8 CCT+HSI 16Bit",
+        "channelCount" : 12
+      }, {
+        "name" : "Mode 9 RGBW 16Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 10 HSI 16Bit",
+        "channelCount" : 6
+      } ]
+    }, {
+      "manufacturer" : "ARRI",
+      "name" : "SkyPanel S60C",
+      "gdtfVersion" : "1.1",
+      "path" : "library/ARRI@SkyPanel_S60C@DMX_v4.4_13_Jan_2021",
+      "modes" : [ {
+        "name" : "Mode 1  CCT+RGBW 8Bit",
+        "channelCount" : 12
+      }, {
+        "name" : "Mode 1  CCT+RGBW ECC 8Bit ",
+        "channelCount" : 20
+      }, {
+        "name" : "Mode 2 - CCT 8Bit ",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 2 - CCT ECC 8Bit",
+        "channelCount" : 15
+      }, {
+        "name" : "Mode 3 - CCT+HSI 8Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 3 - CCT+HSI ECC 8Bit",
+        "channelCount" : 18
+      }, {
+        "name" : "Mode 4 - RGBW 8Bit",
+        "channelCount" : 9
+      }, {
+        "name" : "Mode 4 - RGBW ECC 8Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 5- HSI 8Bit",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 5- HSI ECC 8Bit",
+        "channelCount" : 15
+      }, {
+        "name" : "Mode 6  - CCT+RGBW 16Bit",
+        "channelCount" : 20
+      }, {
+        "name" : "Mode 6  - CCT+RGBW ECC 16Bit",
+        "channelCount" : 36
+      }, {
+        "name" : "Mode 7 - CCT 16Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 7 - CCT ECC 16Bit",
+        "channelCount" : 26
+      }, {
+        "name" : "Mode 8 - CCT+HSI 16Bit",
+        "channelCount" : 16
+      }, {
+        "name" : "Mode 8 - CCT+HSI ECC 16Bit",
+        "channelCount" : 32
+      }, {
+        "name" : "Mode 9 - RGBW 16Bit",
+        "channelCount" : 14
+      }, {
+        "name" : "Mode 9 - RGBW ECC 16Bit",
+        "channelCount" : 30
+      }, {
+        "name" : "Mode 10 - HSI 16Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 10 - HSI ECC 16Bit",
+        "channelCount" : 26
+      }, {
+        "name" : "Mode 16 - Gels 8Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 16 - Gels ECC 8Bit",
+        "channelCount" : 25
+      }, {
+        "name" : "Mode 17 - Gels 16Bit",
+        "channelCount" : 19
+      }, {
+        "name" : "Mode 17 - Gels ECC 16Bit",
+        "channelCount" : 35
+      }, {
+        "name" : "Mode 18 - XY 8Bit",
+        "channelCount" : 11
+      }, {
+        "name" : "Mode 18 - XY ECC 8Bit",
+        "channelCount" : 19
+      }, {
+        "name" : "Mode 19 - XY 16Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 19 - XY ECC 16Bit",
+        "channelCount" : 33
+      }, {
+        "name" : "Mode 20 - Source Match 8Bit",
+        "channelCount" : 10
+      }, {
+        "name" : "Mode 20 - Source Match ECC 8Bit",
+        "channelCount" : 18
+      }, {
+        "name" : "Mode 21 - Source Match 16Bit",
+        "channelCount" : 12
+      }, {
+        "name" : "Mode 21 - Source Match ECC 16Bit",
+        "channelCount" : 28
+      }, {
+        "name" : "Mode 22 - Effects 8Bit",
+        "channelCount" : 13
+      }, {
+        "name" : "Mode 22 - Effects ECC 8Bit",
+        "channelCount" : 21
+      }, {
+        "name" : "Mode 23 - Effects 16Bit",
+        "channelCount" : 21
+      }, {
+        "name" : "Mode 23 - Effects ECC 16Bit",
+        "channelCount" : 37
+      }, {
+        "name" : "Mode 24 -  LE CCT+RGBW 8Bit",
+        "channelCount" : 17
+      }, {
+        "name" : "Mode 25 - LE CCT+RGBW 16Bit",
+        "channelCount" : 33
+      }, {
+        "name" : "Mode 26 -  LE HSI 8Bit",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 27-  LE HSI 16Bit",
+        "channelCount" : 13
+      }, {
+        "name" : "Mode 28 - LE XY 8Bit",
+        "channelCount" : 7
+      }, {
+        "name" : "Mode 29 - LE XY 16Bit",
+        "channelCount" : 13
+      }, {
+        "name" : "Mode 30 - Ultimate 8Bit",
+        "channelCount" : 24
+      }, {
+        "name" : "Mode 30 - Ultimate ECC 8Bit",
+        "channelCount" : 32
+      } ]
+    }, {
+      "manufacturer" : "ARRI",
+      "name" : "SkyPanel S30RP",
+      "gdtfVersion" : "1.1",
+      "path" : "library/ARRI@SkyPanel_S30RP@DMX_v4.4_13_Jan_2021",
+      "modes" : [ {
+        "name" : "Mode 1 - Intensity 8Bit",
+        "channelCount" : 5
+      }, {
+        "name" : "Mode 2 - Intensity16Bit",
+        "channelCount" : 6
+      } ]
+    } ],
+    "Minuit Une" : [ {
+      "manufacturer" : "Minuit Une",
+      "name" : "IVL_Square",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Minuit_Une@IVL_Square@Version_1",
+      "modes" : [ {
+        "name" : "MODE 1",
+        "channelCount" : 25
+      }, {
+        "name" : "MODE 2",
+        "channelCount" : 45
+      } ]
+    }, {
+      "manufacturer" : "Minuit Une",
+      "name" : "IVL_Carre",
+      "gdtfVersion" : "1.0",
+      "path" : "library/Minuit_Une@IVL_Carre@Version_1",
+      "modes" : [ {
+        "name" : "MODE 1",
+        "channelCount" : 25
+      }, {
+        "name" : "MODE 2",
+        "channelCount" : 45
+      } ]
+    } ],
+    "Clay Paky" : [ {
+      "manufacturer" : "Clay Paky",
+      "name" : "Sharpy",
+      "gdtfVersion" : "1.2",
+      "path" : "library/Clay_Paky@Sharpy@ClayPaky_Official_File_Fw_Ver_2_25_006",
+      "modes" : [ {
+        "name" : "Standard",
+        "channelCount" : 16
+      }, {
+        "name" : "Vector",
+        "channelCount" : 20
+      } ]
+    } ]
+  }
+}

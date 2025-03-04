@@ -12,6 +12,10 @@ repositories {
 dependencies {
     implementation project(':thelibrary')
     implementation project(':mvrgdtf')
+
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.24.3'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.17'
+    implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.5.17'
     //implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.18.2'
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.18.2'
     testImplementation platform('org.junit:junit-bom:5.10.0')

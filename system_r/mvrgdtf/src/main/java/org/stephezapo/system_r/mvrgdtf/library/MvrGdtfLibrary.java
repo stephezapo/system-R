@@ -9,4 +9,14 @@ public class MvrGdtfLibrary
         libraryData.clear();
         new Thread(new LibraryCreator(libraryData)).start();
     }
+
+    public static LibraryData getLibraryData()
+    {
+        return libraryData;
+    }
+
+    public static void setLibraryData(LibraryData newData)
+    {
+        libraryData = newData;
+    }
 }
