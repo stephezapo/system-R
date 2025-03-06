@@ -1,4 +1,4 @@
-package org.stephezapo.system_r.mvrgdtf.library;
+package org.stephezapo.system_r.api.fixture.library;
 
 import java.io.Serializable;
 import java.util.ArrayList;

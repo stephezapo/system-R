@@ -1,22 +1,47 @@
 package org.stephezapo.system_r.mvrgdtf.library;
 
+import org.stephezapo.system_r.api.fixture.library.LibraryInfo;
+import org.stephezapo.system_r.api.fixture.library.LibraryState;
+import org.stephezapo.system_r.api.fixture.library.LibraryState.State;
+
 public class MvrGdtfLibrary
 {
-    private static LibraryData libraryData = new LibraryData();
+    private static LibraryInfo libraryInfo = new LibraryInfo();
+    private static LibraryState libraryState = new LibraryState();
+    private static LibraryCreator libraryCreator;
 
     public static void ExtractLibrary()
     {
-        libraryData.clear();
-        new Thread(new LibraryCreator(libraryData)).start();
+        libraryInfo.clear();
+        libraryState.setProgress((short)0);
+        libraryState.setState(State.IMPORTING);
+
+        libraryCreator = new LibraryCreator(libraryInfo);
+        new Thread(libraryCreator).start();
     }
 
-    public static LibraryData getLibraryData()
+    public static LibraryInfo getLibraryInfo()
     {
-        return libraryData;
+        return libraryInfo;
     }
 
-    public static void setLibraryData(LibraryData newData)
+    public static void setLibraryData(LibraryInfo newData)
     {
-        libraryData = newData;
+        libraryInfo = newData;
+        libraryState.setState(libraryInfo.getData().isEmpty() ? State.EMPTY : State.READY);
+    }
+
+    public static LibraryState getLibraryState()
+    {
+        if(libraryCreator != null && libraryCreator.isRunning())
+        {
+            libraryState.setProgress(libraryCreator.getProgress());
+        }
+        else
+        {
+            libraryState.setState(libraryInfo.getData().isEmpty() ? State.EMPTY : State.READY);
+        }
+
+        return libraryState;
     }
 }

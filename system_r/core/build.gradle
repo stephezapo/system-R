@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation project(':thelibrary')
+    implementation project(':api')
     implementation project(':mvrgdtf')
 
     implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.24.3'

@@ -1,11 +1,13 @@
 package org.stephezapo.system_r.core.ui;
 
 import javafx.application.Platform;
+import org.stephezapo.system_r.core.Core;
 
 public class UiCore
 {
     public static void startup()
     {
+        Core.Get().getAPI().startCore();
         openWindows();
     }
 

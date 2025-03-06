@@ -1,4 +1,4 @@
-package org.stephezapo.system_r.mvrgdtf.library;
+package org.stephezapo.system_r.api.fixture.library;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -6,11 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LibraryData implements Serializable
+public class LibraryInfo
+    implements Serializable
 {
     private Map<String, List<FixtureTypeInfo>> data = new HashMap<>();
 
-    public LibraryData()
+    public LibraryInfo()
     {
 
     }
@@ -20,7 +21,7 @@ public class LibraryData implements Serializable
         return data;
     }
 
-    protected void addFixtureTypeInfo(FixtureTypeInfo info)
+    public void addFixtureTypeInfo(FixtureTypeInfo info)
     {
         if(!data.containsKey(info.getManufacturer()))
         {
@@ -30,7 +31,7 @@ public class LibraryData implements Serializable
         data.get(info.getManufacturer()).add(info);
     }
 
-    protected void clear()
+    public void clear()
     {
         data.clear();
     }

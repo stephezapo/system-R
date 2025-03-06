@@ -16,15 +16,18 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.stephezapo.system_r.api.fixture.library.FixtureTypeInfo;
+import org.stephezapo.system_r.api.fixture.library.FixtureTypeMode;
+import org.stephezapo.system_r.api.fixture.library.LibraryInfo;
 
 public class LibraryCreator implements Runnable
 {
     private boolean running = true;
     private AtomicInteger progress = new AtomicInteger(0);
     private int totalFiles = 0;
-    private LibraryData data;
+    private LibraryInfo data;
 
-    public LibraryCreator(LibraryData data)
+    public LibraryCreator(LibraryInfo data)
     {
         this.data = data;
         progress.set(0);
@@ -33,6 +36,7 @@ public class LibraryCreator implements Runnable
     @Override
     public void run()
     {
+        running = true;
         String libraryDir = "library";
         String tempDir = libraryDir + "/temp";
 
@@ -43,6 +47,7 @@ public class LibraryCreator implements Runnable
         catch(IOException iex)
         {
             System.err.println("Could not unzip library archive.");
+            running = false;
             iex.printStackTrace();
         }
 
@@ -52,6 +57,7 @@ public class LibraryCreator implements Runnable
         if(totalFiles==0)
         {
             System.out.println("No GDTF files extracted. Done.");
+            running = false;
             return;
         }
 
@@ -72,6 +78,7 @@ public class LibraryCreator implements Runnable
             catch(IOException iex)
             {
                 System.out.println("Could not unzip " + gdtfFile + ". Skipping.");
+                running = false;
                 iex.printStackTrace();
             }
             progress.set((int)Math.round((99.0*filesDone)/(double)totalFiles));
@@ -90,19 +97,26 @@ public class LibraryCreator implements Runnable
         catch (IOException e)
         {
             System.err.println("Could not delete temporary directory.");
+            running = false;
             e.printStackTrace();
         }
 
         progress.set(100);
+        running = false;
         System.out.println("Library extraction done.");
     }
 
-    public int getProgress()
+    public short getProgress()
     {
-        return progress.get();
+        return (short)progress.get();
     }
 
-    public LibraryData getLibraryData()
+    public boolean isRunning()
+    {
+        return running;
+    }
+
+    public LibraryInfo getLibraryData()
     {
         return data;
     }
@@ -152,7 +166,8 @@ public class LibraryCreator implements Runnable
                     }
                 }
 
-                FixtureTypeMode mode = new FixtureTypeMode(dmxMode.getName(), maximum);
+                FixtureTypeMode
+                    mode = new FixtureTypeMode(dmxMode.getName(), maximum);
                 info.addMode(mode);
             }
 
