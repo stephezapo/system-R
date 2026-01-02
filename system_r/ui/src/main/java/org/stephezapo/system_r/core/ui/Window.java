@@ -15,6 +15,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.stephezapo.system_r.core.Main;
 import org.stephezapo.system_r.core.ui.Dialog.DialogType;
 
 public class Window extends Stage
@@ -28,14 +29,14 @@ public class Window extends Stage
     private final Group tiles = new Group();
     private Point2D lastClick = new Point2D(0, 0);
     private boolean dialogIsOpen = false;
+    private static final int INTERNAL_SCREEN_WIDTH=800;
+    private static final int INTERNAL_SCREEN_HEIGHT=480;
 
     public enum WindowType
     {
-        MAIN,
         PLAYBACK1,
         PLAYBACK2,
-        SPECIAL1,
-        SPECIAL2,
+        PROGRAMMER,
         EXTERNAL1,
         EXTERNAL2
     }
@@ -49,13 +50,13 @@ public class Window extends Stage
         String fileString = "config/Window_";
         switch(type)
         {
-            case MAIN ->
-            {
-                setTitle("Main");
-                fileString += "Main";
-            }
             case PLAYBACK1 ->
             {
+                if(Main.DEVMODE)
+                {
+                    setX(10);
+                    setY(10);
+                }
                 setTitle("Playback 1");
                 fileString += "Playback1";
             }
@@ -64,15 +65,15 @@ public class Window extends Stage
                 setTitle("Playback 2");
                 fileString += "Playback2";
             }
-            case SPECIAL1 ->
+            case PROGRAMMER ->
             {
-                setTitle("Special 1");
-                fileString += "Special1";
-            }
-            case SPECIAL2 ->
-            {
-                setTitle("Special 2");
-                fileString += "Special2";
+                if(Main.DEVMODE)
+                {
+                    setX(INTERNAL_SCREEN_WIDTH+20);
+                    setY(10);
+                }
+                setTitle("Programmer");
+                fileString += "Programmer";
             }
             case EXTERNAL1 ->
             {
@@ -84,6 +85,12 @@ public class Window extends Stage
                 setTitle("External 2");
                 fileString += "External2";
             }
+        }
+
+        if(type!=WindowType.EXTERNAL1 && type!=WindowType.EXTERNAL2)
+        {
+            setWidth(INTERNAL_SCREEN_WIDTH);
+            setHeight(INTERNAL_SCREEN_HEIGHT);
         }
 
         propsFile = new File(fileString + "_Props.prp");
@@ -324,9 +331,12 @@ public class Window extends Stage
 
             if(!propsFile.exists())
             {
-                if(!propsFile.getParentFile().mkdirs())
+                if(!propsFile.getParentFile().exists())
                 {
-                    throw new IOException("Could not create parent directory");
+                    if(!propsFile.getParentFile().mkdirs())
+                    {
+                        throw new IOException("Could not create parent directory");
+                    }
                 }
 
                 if(!propsFile.createNewFile())

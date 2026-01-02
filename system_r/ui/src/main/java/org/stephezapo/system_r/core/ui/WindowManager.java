@@ -2,23 +2,12 @@ package org.stephezapo.system_r.core.ui;
 
 import java.util.HashMap;
 import java.util.Map;
-import javafx.geometry.Point2D;
+import org.stephezapo.system_r.core.Main;
 import org.stephezapo.system_r.core.ui.Window.WindowType;
 
 public class WindowManager
 {
     private static Map<WindowType, Window> windows = new HashMap<>();
-
-    public static boolean createMainWindow()
-    {
-        if(windows.containsKey(WindowType.MAIN))
-        {
-            return false;
-        }
-
-        createWindow(WindowType.MAIN);
-        return true;
-    }
 
     public static boolean createPlaybackWindow()
     {
@@ -37,17 +26,11 @@ public class WindowManager
         return false;
     }
 
-    public static boolean createSpecialWindow()
+    public static boolean createProgrammerWindow()
     {
-        if(!windows.containsKey(WindowType.SPECIAL1))
+        if(!windows.containsKey(WindowType.PROGRAMMER))
         {
-            createWindow(WindowType.SPECIAL1);
-            return true;
-        }
-
-        if(!windows.containsKey(WindowType.SPECIAL2))
-        {
-            createWindow(WindowType.SPECIAL2);
+            createWindow(WindowType.PROGRAMMER);
             return true;
         }
 

@@ -8,6 +8,8 @@ import org.stephezapo.system_r.core.ui.WindowManager;
 
 public class Main
 {
+    public static final boolean DEVMODE = true;
+
     public static class MainApp extends Application
     {
         @Override
