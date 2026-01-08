@@ -108,7 +108,10 @@ public class Window extends Stage
 
         setOnCloseRequest(windowEvent -> close());
 
-        loadProps();
+        if(type==WindowType.EXTERNAL1 || type==WindowType.EXTERNAL2)
+        {
+            loadProps();
+        }
 
         executorService = Executors.newScheduledThreadPool(1);
         scheduledFuture = executorService.scheduleAtFixedRate(this::storeProps, 1, 5, TimeUnit.SECONDS);
