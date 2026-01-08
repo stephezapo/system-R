@@ -54,7 +54,7 @@ public class Core
         DirectoryManager.init();
         FixtureLibrary.init();
 
-        //logger.info("Library loaded with " + FixtureLibrary.)
+        logger.info("Library loaded with " + FixtureLibrary.getLibraryInfo().getData().keySet().size() + " manufacturers.");
         // TODO: implement startup stuff
         /*LibraryData data = new LibraryData();
         LibraryCreator creator = new LibraryCreator(data);

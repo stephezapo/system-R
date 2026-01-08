@@ -11,8 +11,9 @@ import javafx.scene.paint.Color;
 
 public class Dialog extends Tile
 {
-    private static final double DIALOG_WIDTH = 600.0;
+    private static final double DIALOG_WIDTH = 300.0;
     private static final double DIALOG_HEIGHT = 200.0;
+    private static final double DIALOG_MARGIN = 10.0;
 
     public enum DialogType
     {
@@ -40,12 +41,10 @@ public class Dialog extends Tile
         dropShadow.setColor(Color.color(0.1, 0.1, 0.1));
         setEffect(dropShadow);
 
-
-        setPrefWidth(DIALOG_WIDTH);
-        setPrefHeight(DIALOG_HEIGHT);
-        setLayoutX(parent.getWidth()/2.0-DIALOG_WIDTH/2.0);
-        setLayoutY(parent.getHeight()/2.0-DIALOG_HEIGHT/2.0);
-
+        setPrefWidth(Math.min(DIALOG_WIDTH, parent.getWidth()-DIALOG_MARGIN));
+        setPrefHeight(Math.min(DIALOG_HEIGHT, parent.getHeight()-DIALOG_MARGIN));
+        setLayoutX(parent.getWidth()/2.0-getPrefWidth()/2.0);
+        setLayoutY(parent.getHeight()/2.0-getPrefHeight()/2.0);
         updateLayout();
         setTitle(title);
     }

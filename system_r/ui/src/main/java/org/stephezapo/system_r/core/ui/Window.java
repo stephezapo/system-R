@@ -96,7 +96,7 @@ public class Window extends Stage
         propsFile = new File(fileString + "_Props.prp");
 
         gridPanel = new GridPanel(this);
-        setScene(new Scene(gridPanel, 300, 250));
+        setScene(new Scene(gridPanel, getWidth(), getHeight()));
 
         gridPanel.getChildren().add(tiles);
 
@@ -302,8 +302,8 @@ public class Window extends Stage
                 windowProps = new Properties();
             }
 
-            setWidth(Double.parseDouble(windowProps.getProperty("window.size.width", "400")));
-            setHeight(Double.parseDouble(windowProps.getProperty("window.size.height", "300")));
+            setWidth(Double.parseDouble(windowProps.getProperty("window.size.width", "800")));
+            setHeight(Double.parseDouble(windowProps.getProperty("window.size.height", "480")));
             setMaximized(Boolean.parseBoolean(windowProps.getProperty("window.state.maximized", "false")));
             setX(Double.parseDouble(windowProps.getProperty("window.pos.x", "200")));
             setY(Double.parseDouble(windowProps.getProperty("window.pos.y", "200")));
