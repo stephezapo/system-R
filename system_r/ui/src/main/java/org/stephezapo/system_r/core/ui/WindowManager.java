@@ -26,6 +26,17 @@ public class WindowManager
         return false;
     }
 
+    public static boolean createControlsWindow()
+    {
+        if(!windows.containsKey(WindowType.CONTROLS))
+        {
+            createWindow(WindowType.CONTROLS);
+            return true;
+        }
+
+        return false;
+    }
+
     public static boolean createProgrammerWindow()
     {
         if(!windows.containsKey(WindowType.PROGRAMMER))
@@ -66,7 +77,18 @@ public class WindowManager
 
     private static void createWindow(WindowType type)
     {
-        Window window = new Window(type);
+        Window window;
+        if(type.equals(WindowType.CONTROLS))
+        {
+            window = new ControlsWindow();
+        }
+        else
+        {
+            window = new Window(type);
+        }
+
+        window.setWindowListeners();
+
         windows.put(type, window);
         window.show();
     }

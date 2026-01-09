@@ -20,7 +20,7 @@ public class UiCore
 
     private static void openWindows()
     {
-        // Create window 1 (programmer)
+        WindowManager.createControlsWindow();
         WindowManager.createProgrammerWindow();
         WindowManager.createPlaybackWindow();
     }

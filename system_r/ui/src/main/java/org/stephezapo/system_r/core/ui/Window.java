@@ -34,6 +34,7 @@ public class Window extends Stage
 
     public enum WindowType
     {
+        CONTROLS,
         PLAYBACK1,
         PLAYBACK2,
         PROGRAMMER,
@@ -50,6 +51,16 @@ public class Window extends Stage
         String fileString = "config/Window_";
         switch(type)
         {
+            case CONTROLS ->
+            {
+                if(Main.DEVMODE)
+                {
+                    setX(10);
+                    setY(20 + INTERNAL_SCREEN_HEIGHT);
+                }
+                setTitle("Control Panel");
+                fileString += "Controls";
+            }
             case PLAYBACK1 ->
             {
                 if(Main.DEVMODE)
@@ -87,7 +98,7 @@ public class Window extends Stage
             }
         }
 
-        if(type!=WindowType.EXTERNAL1 && type!=WindowType.EXTERNAL2)
+        if(type!=WindowType.CONTROLS && type!=WindowType.EXTERNAL1 && type!=WindowType.EXTERNAL2)
         {
             setWidth(INTERNAL_SCREEN_WIDTH);
             setHeight(INTERNAL_SCREEN_HEIGHT);
@@ -95,16 +106,13 @@ public class Window extends Stage
 
         propsFile = new File(fileString + "_Props.prp");
 
-        gridPanel = new GridPanel(this);
-        setScene(new Scene(gridPanel, getWidth(), getHeight()));
+        if(!type.equals(WindowType.CONTROLS))
+        {
+            gridPanel = new GridPanel(this);
+            setScene(new Scene(gridPanel, getWidth(), getHeight()));
 
-        gridPanel.getChildren().add(tiles);
-
-        getScene().widthProperty().addListener((observableValue, number, t1) -> resize());
-        getScene().heightProperty().addListener((observableValue, number, t1) -> resize());
-        maximizedProperty().addListener((observableValue, number, t1) -> resize());
-        xProperty().addListener((observableValue, number, t1) -> move());
-        yProperty().addListener((observableValue, number, t1) -> move());
+            gridPanel.getChildren().add(tiles);
+        }
 
         setOnCloseRequest(windowEvent -> close());
 
@@ -117,6 +125,20 @@ public class Window extends Stage
         scheduledFuture = executorService.scheduleAtFixedRate(this::storeProps, 1, 5, TimeUnit.SECONDS);
 
         resize();
+    }
+
+    protected Window()
+    {
+
+    }
+
+    public void setWindowListeners()
+    {
+        getScene().widthProperty().addListener((observableValue, number, t1) -> resize());
+        getScene().heightProperty().addListener((observableValue, number, t1) -> resize());
+        maximizedProperty().addListener((observableValue, number, t1) -> resize());
+        xProperty().addListener((observableValue, number, t1) -> move());
+        yProperty().addListener((observableValue, number, t1) -> move());
     }
 
     public void close()
@@ -360,7 +382,11 @@ public class Window extends Stage
 
     private void resize()
     {
-        gridPanel.redraw();
+        if (!type.equals(WindowType.CONTROLS))
+        {
+            gridPanel.redraw();
+        }
+
         storeFlag.set(true);
     }
 
