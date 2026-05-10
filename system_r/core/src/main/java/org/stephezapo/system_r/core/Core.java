@@ -1,11 +1,15 @@
 package org.stephezapo.system_r.core;
 
+import java.io.IOException;
 import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.stephezapo.system_r.core.fixtures.FixtureLibrary;
 import org.stephezapo.system_r.core.util.ConfigManager;
 import org.stephezapo.system_r.core.util.DirectoryManager;
+
+import org.stephezapo.system_r.core.network.artnet.ArtNet;
+import org.stephezapo.system_r.core.network.sacn.Sacn;
 
 public class Core
 {
@@ -69,6 +73,24 @@ public class Core
         Serializer.serialize(data, "data/LibraryData.json");
         LibraryData newData = (LibraryData)Serializer.deserialize("data/LibraryData.json", LibraryData.class);
         System.out.println("EQUAL: " + (data.equals(newData)));*/
+
+        try 
+        {
+            ArtNet.Get().start();
+        } 
+        catch (IOException e)
+        {
+            logger.error("Could not start Art-Net submodule", e);
+        }
+
+        try 
+        {
+            Sacn.Get().start();
+        } 
+        catch (IOException e) 
+        {
+            logger.error("Could not start sACN submodule", e);
+        }
 
         running = true;
     }
