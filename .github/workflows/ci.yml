@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: Linux,   os: ubuntu-latest }
+          - { name: macOS,   os: macos-latest }
+          - { name: Windows, os: windows-latest }
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # JUCE's GUI modules need these on Linux. Web browser + curl are compiled
+      # out (see app/CMakeLists.txt), so webkit/libcurl are deliberately absent.
+      - name: Install Linux dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libasound2-dev libjack-jackd2-dev libfreetype-dev libfontconfig1-dev \
+            libgtk-3-dev libx11-dev libxcomposite-dev libxcursor-dev libxext-dev \
+            libxinerama-dev libxrandr-dev libxrender-dev libglu1-mesa-dev mesa-common-dev
+
+      # Cache the fetched JUCE / Catch2 sources so every run doesn't re-clone them.
+      - name: Cache dependency sources
+        uses: actions/cache@v4
+        with:
+          path: build/_deps
+          key: deps-${{ runner.os }}-juce8.0.9-catch3.9.1
+
+      - name: Configure
+        run: cmake -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo
+
+      - name: Build
+        run: cmake --build build --config RelWithDebInfo --parallel
+
+      - name: Test
+        run: ctest --test-dir build --build-config RelWithDebInfo --output-on-failure

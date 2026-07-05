@@ -1,6 +1,0 @@
-rootProject.name = 'system_r'
-include 'api'
-include 'core'
-include 'ui'
-include 'mvrgdtf'
-
