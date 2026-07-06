@@ -6,11 +6,17 @@
 
 #include <array>
 #include <cstdint>
+#include <optional>
 
 namespace systemr::e131
 {
 /** UDP port for streaming ACN (ANSI E1.31-2018 §4.1). */
 inline constexpr int kPort = 5568;
+
+/** Framing-layer Options bits (E1.31 §6.2.6). */
+inline constexpr std::uint8_t kOptionPreview        = 0x80;
+inline constexpr std::uint8_t kOptionStreamTerminated = 0x40;
+inline constexpr std::uint8_t kOptionForceSync      = 0x20;
 
 /** Default data priority (E1.31 §6.2.3). */
 inline constexpr std::uint8_t kDefaultPriority = 100;
@@ -43,4 +49,23 @@ using DataPacket = std::array<std::uint8_t, kDataPacketSize>;
                                           std::uint8_t options,
                                           std::uint16_t universe,
                                           const Universe& slots);
+
+/** Decoded contents of a received E1.31 Data Packet. */
+struct DataPacketInfo
+{
+    juce::Uuid    cid;
+    juce::String  sourceName;
+    std::uint8_t  priority = 0;
+    std::uint16_t syncUniverse = 0;
+    std::uint8_t  sequence = 0;
+    std::uint8_t  options = 0;
+    std::uint16_t universe = 0;
+    std::uint16_t slotCount = 0; // number of DMX slots (excludes start code)
+    Universe      slots {};      // zero-padded to a full universe
+};
+
+/** Parses an E1.31 Data Packet, validating the ACN/root/framing/DMP layers and the
+    DMX (0x00) start code. Returns nullopt for anything that isn't a well-formed
+    E1.31 data packet (other start codes, discovery/sync packets, malformed input). */
+[[nodiscard]] std::optional<DataPacketInfo> parseDataPacket (const std::uint8_t* data, std::size_t size);
 }

@@ -20,6 +20,10 @@ target_sources(systemr_tests PRIVATE
     VersionTests.cpp
     TripleBufferTests.cpp
     E131PacketTests.cpp
+    ArtNetPacketTests.cpp
+    OutputManagerTests.cpp
+    InputMergerTests.cpp
+    ReceiverTests.cpp
     EngineTests.cpp)
 
 target_link_libraries(systemr_tests PRIVATE

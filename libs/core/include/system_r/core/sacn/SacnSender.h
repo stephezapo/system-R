@@ -8,11 +8,12 @@
 
 namespace systemr
 {
-/** Sends one universe of DMX over sACN (ANSI E1.31-2018) via IPv4 multicast.
+/** Transmits E1.31 (sACN) data packets from a single shared socket.
 
-    Phase 1: a single output universe, unsynchronised, default priority. Each source
-    gets a persistent random CID and its own per-universe sequence counter.
-*/
+    The source identity (CID + source name) is fixed for the console; per-universe
+    parameters — universe number, priority, sequence, destination — are passed per
+    send so one socket can drive many universes. Sequence numbering per universe is
+    the caller's responsibility (see OutputManager). */
 class SacnSender
 {
 public:
@@ -20,25 +21,31 @@ public:
 
     /** Opens the UDP socket. Returns false if binding failed. */
     bool open();
+    [[nodiscard]] bool isOpen() const noexcept { return opened; }
 
-    void setUniverse (int universe);
-    void setSourceName (const juce::String& name);
-    void setPriority (std::uint8_t priority);
+    void setSourceName (const juce::String& name) { sourceName = name; }
+    [[nodiscard]] const juce::Uuid& cid() const noexcept { return cidValue; }
 
-    /** Packetises and transmits the given slots to the configured universe's
-        multicast group. Returns true if the datagram was sent. */
-    bool send (const Universe& slots);
+    /** Sends one universe of DMX.
+        @param universe     1..63999
+        @param priority     0..200 (higher wins on receivers)
+        @param sequence     per-universe counter supplied by the caller
+        @param syncUniverse sync address, or 0 for unsynchronised
+        @param destination  target host; empty selects the universe's multicast group */
+    bool sendDmx (std::uint16_t universe,
+                  std::uint8_t priority,
+                  std::uint8_t sequence,
+                  std::uint16_t syncUniverse,
+                  const juce::String& destination,
+                  const Universe& slots);
 
-    [[nodiscard]] juce::String multicastAddress() const;
-    [[nodiscard]] int universe() const noexcept { return outputUniverse; }
+    /** IPv4 multicast group for a universe (E1.31 Appendix A). */
+    [[nodiscard]] static juce::String multicastAddress (int universe);
 
 private:
-    juce::DatagramSocket socket { true }; // enable broadcast/multicast sends
-    juce::Uuid cid;
+    juce::DatagramSocket socket { true }; // enable multicast/broadcast sends
+    juce::Uuid cidValue;
     juce::String sourceName { "system-R" };
-    int outputUniverse = 1;
-    std::uint8_t priority = 100;
-    std::uint8_t sequence = 0;
-    bool isOpen = false;
+    bool opened = false;
 };
 }

@@ -12,8 +12,14 @@ add_library(systemr_core STATIC
     src/Version.cpp
     src/ShowDocument.cpp
     src/Engine.cpp
+    src/OutputManager.cpp
+    src/net/InputMerger.cpp
+    src/artnet/ArtNetPacket.cpp
+    src/artnet/ArtNetSender.cpp
+    src/artnet/ArtNetReceiver.cpp
     src/sacn/E131Packet.cpp
-    src/sacn/SacnSender.cpp)
+    src/sacn/SacnSender.cpp
+    src/sacn/SacnReceiver.cpp)
 
 add_library(systemr::core ALIAS systemr_core)
 

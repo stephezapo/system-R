@@ -9,32 +9,32 @@ SacnSender::SacnSender() = default;
 bool SacnSender::open()
 {
     // Bind to an ephemeral local port; multicast sends don't require joining a group.
-    isOpen = socket.bindToPort (0);
-    return isOpen;
+    opened = socket.bindToPort (0);
+    return opened;
 }
 
-void SacnSender::setUniverse (int universe)      { outputUniverse = universe; }
-void SacnSender::setSourceName (const juce::String& name) { sourceName = name; }
-void SacnSender::setPriority (std::uint8_t p)    { priority = p; }
-
-juce::String SacnSender::multicastAddress() const
+juce::String SacnSender::multicastAddress (int universe)
 {
-    return e131::multicastAddressFor (outputUniverse);
+    return e131::multicastAddressFor (universe);
 }
 
-bool SacnSender::send (const Universe& slots)
+bool SacnSender::sendDmx (std::uint16_t universe,
+                          std::uint8_t priority,
+                          std::uint8_t sequence,
+                          std::uint16_t syncUniverse,
+                          const juce::String& destination,
+                          const Universe& slots)
 {
-    if (! isOpen)
+    if (! opened)
         return false;
 
-    const auto packet = e131::buildDataPacket (cid, sourceName, priority,
-                                               /*syncUniverse*/ 0, sequence,
-                                               /*options*/ 0,
-                                               static_cast<std::uint16_t> (outputUniverse),
-                                               slots);
-    ++sequence; // wraps naturally at 256
+    const auto packet = e131::buildDataPacket (cidValue, sourceName, priority,
+                                               syncUniverse, sequence, /*options*/ 0,
+                                               universe, slots);
 
-    const int sent = socket.write (multicastAddress(), e131::kPort,
+    const auto host = destination.isNotEmpty() ? destination
+                                               : multicastAddress (universe);
+    const int sent = socket.write (host, e131::kPort,
                                    packet.data(), static_cast<int> (packet.size()));
     return sent == static_cast<int> (packet.size());
 }

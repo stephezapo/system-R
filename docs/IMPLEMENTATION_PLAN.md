@@ -359,18 +359,27 @@ It sits below local playback so local control always wins unless explicitly conf
 Each phase ends in something runnable. **Phase 0/1 is a walking skeleton** proving the whole
 vertical (UI → engine → wire) before breadth is added.
 
-**Phase 0 — Scaffolding**
+**Phase 0 — Scaffolding** ✅ *done*
 CMake + JUCE building an empty JUCE app on all three OSes in CI. `core` lib + test harness.
 License decision on JUCE. → *empty window opens everywhere.*
 
-**Phase 1 — Walking skeleton (vertical slice)**
+**Phase 1 — Walking skeleton (vertical slice)** ✅ *done*
 Minimal `ShowDocument`; hard-coded single dimmer fixture; a programmer slider; engine tick;
 **sACN output** of one universe. Prove UI→engine→wire→real DMX end-to-end.
 
-**Phase 2 — Network I/O complete**
+**Phase 2 — Network I/O complete** ✅ *done*
 Full Art-Net 4 + sACN E1.31 senders (multi-universe, keepalive, multicast, priority) and
 receivers **with priority/HTP input merge + tracking-backup capture**, round-trip tests, and
 scaling to **256 universes**. Per-universe output config + DMX Output view panel.
+
+> Delivered: `core/artnet` (ArtDmx/ArtSync/ArtPoll/ArtPollReply build+parse), `ArtNetSender`,
+> `ArtNetReceiver`; generalised multi-universe `SacnSender` + `E131Packet` parser +
+> `SacnReceiver`; `core/net/InputMerger` (priority-wins, HTP-among-equals, source-loss
+> timeout, per-source capture for tracking-backup); `UniverseOutput` config + `OutputManager`
+> (change-detection + keepalive, one socket per protocol); engine renders/publishes N
+> universes; `DmxOutputView` live grid panel. 36 unit tests (round-trip + merge + keepalive +
+> 256-universe budget). *Deferred to later phases:* wiring the merged external-input layer into
+> the engine value stack (Phase 4 merge engine) and ArtSync-gated frame release.
 
 **Phase 3 — Fixtures & patch (GDTF + MVR)**
 GDTF parser → `FixtureLibrary`; **MVR scene import** (fixtures/addresses/positions/layers);

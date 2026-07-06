@@ -22,8 +22,8 @@ void renderUniverse (const ShowDocument& show,
     }
 }
 
-Engine::Engine (ShowDocument& s, Programmer& p, SacnSender& snd)
-    : show (s), programmer (p), sender (snd)
+Engine::Engine (ShowDocument& s, Programmer& p, OutputManager& o)
+    : show (s), programmer (p), outputManager (o)
 {
 }
 
@@ -44,10 +44,18 @@ void Engine::stop()
 
 void Engine::hiResTimerCallback()
 {
-    Universe& frame = snapshot.writeSlot();
+    const auto& configs = outputManager.config();
+    const double nowMs = juce::Time::getMillisecondCounterHiRes();
 
-    renderUniverse (show, programmer, sender.universe(), frame);
-    sender.send (frame);
+    UniverseSet& frames = snapshot.writeSlot();
+    frames.resize (configs.size()); // no-op once the three slots are sized
+
+    for (std::size_t i = 0; i < configs.size(); ++i)
+    {
+        renderUniverse (show, programmer, configs[i].index, frames[i]);
+        outputManager.send (i, frames[i], nowMs);
+    }
+
     snapshot.publish();
 }
 }
