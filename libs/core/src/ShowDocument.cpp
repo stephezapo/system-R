@@ -13,6 +13,8 @@ namespace ids
     const juce::Identifier universe { "universe" };
     const juce::Identifier address  { "address" };
     const juce::Identifier channels { "channels" };
+    const juce::Identifier gdtfType { "gdtfType" };
+    const juce::Identifier mode     { "mode" };
 }
 
 ShowDocument::ShowDocument()
@@ -27,16 +29,43 @@ ShowDocument::ShowDocument()
 ShowDocument::Fixture ShowDocument::addDimmer (int fid, const juce::String& name,
                                               int universe, int address)
 {
+    return addFixture (fid, name, {}, {}, universe, address, 1);
+}
+
+ShowDocument::Fixture ShowDocument::addFixture (int fid, const juce::String& name,
+                                               const juce::String& gdtfTypeId, const juce::String& modeName,
+                                               int universe, int address, int channelCount)
+{
     juce::ValueTree fixture (ids::FIXTURE);
     fixture.setProperty (ids::fid, fid, nullptr);
     fixture.setProperty (ids::name, name, nullptr);
     fixture.setProperty (ids::universe, universe, nullptr);
     fixture.setProperty (ids::address, address, nullptr);
-    fixture.setProperty (ids::channels, 1, nullptr);
+    fixture.setProperty (ids::channels, channelCount, nullptr);
+    if (gdtfTypeId.isNotEmpty())
+    {
+        fixture.setProperty (ids::gdtfType, gdtfTypeId, nullptr);
+        fixture.setProperty (ids::mode, modeName, nullptr);
+    }
 
     show.getChildWithName (ids::PATCH).appendChild (fixture, &undo);
 
-    return { fid, name, universe, address, 1 };
+    return { fid, name, universe, address, channelCount, gdtfTypeId, modeName };
+}
+
+bool ShowDocument::removeFixture (int fid)
+{
+    auto patch = show.getChildWithName (ids::PATCH);
+    for (int i = patch.getNumChildren() - 1; i >= 0; --i)
+    {
+        const auto child = patch.getChild (i);
+        if ((int) child.getProperty (ids::fid) == fid)
+        {
+            patch.removeChild (i, &undo);
+            return true;
+        }
+    }
+    return false;
 }
 
 std::vector<ShowDocument::Fixture> ShowDocument::fixtures() const
@@ -51,7 +80,9 @@ std::vector<ShowDocument::Fixture> ShowDocument::fixtures() const
             fixture.getProperty (ids::name).toString(),
             (int) fixture.getProperty (ids::universe),
             (int) fixture.getProperty (ids::address),
-            (int) fixture.getProperty (ids::channels)
+            (int) fixture.getProperty (ids::channels),
+            fixture.getProperty (ids::gdtfType).toString(),
+            fixture.getProperty (ids::mode).toString()
         });
     }
 

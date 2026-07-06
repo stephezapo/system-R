@@ -24,6 +24,9 @@ target_sources(systemr_tests PRIVATE
     OutputManagerTests.cpp
     InputMergerTests.cpp
     ReceiverTests.cpp
+    GdtfTests.cpp
+    PatchTests.cpp
+    MvrTests.cpp
     EngineTests.cpp)
 
 target_link_libraries(systemr_tests PRIVATE

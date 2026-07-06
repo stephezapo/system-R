@@ -11,9 +11,14 @@
 add_library(systemr_core STATIC
     src/Version.cpp
     src/ShowDocument.cpp
+    src/Patch.cpp
     src/Engine.cpp
     src/OutputManager.cpp
     src/net/InputMerger.cpp
+    src/gdtf/FixtureType.cpp
+    src/gdtf/GdtfParser.cpp
+    src/gdtf/FixtureLibrary.cpp
+    src/mvr/MvrImporter.cpp
     src/artnet/ArtNetPacket.cpp
     src/artnet/ArtNetSender.cpp
     src/artnet/ArtNetReceiver.cpp

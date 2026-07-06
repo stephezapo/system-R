@@ -381,10 +381,24 @@ scaling to **256 universes**. Per-universe output config + DMX Output view panel
 > 256-universe budget). *Deferred to later phases:* wiring the merged external-input layer into
 > the engine value stack (Phase 4 merge engine) and ArtSync-gated frame release.
 
-**Phase 3 — Fixtures & patch (GDTF + MVR)**
+**Phase 3 — Fixtures & patch (GDTF + MVR)** ✅ *done*
 GDTF parser → `FixtureLibrary`; **MVR scene import** (fixtures/addresses/positions/layers);
 import UI; Patch panel; multi-universe patching with overlap detection; Fixture Sheet panel.
 Engine encodes real modes (coarse/fine, channel functions).
+
+> Delivered: `core/gdtf` — `FixtureType`/`DmxMode`/`DmxChannel`/`ChannelFunction` model,
+> `DmxValue` (value/bytes + width rescale), coarse/fine encode helpers; `GdtfParser`
+> (ZIP+XML, defensive) and `FixtureLibrary`. `core/mvr/MvrImporter` (GeneralSceneDescription
+> parse, absolute-address → universe/channel, embedded-GDTF resolution, apply-to-patch).
+> `ShowDocument` gains GDTF-typed fixtures + remove; `core/Patch` overlap detection
+> (`wouldOverlap`/`overlappingFixtures`/`firstFreeAddress`). Engine renders GDTF modes
+> (channel defaults + coarse/fine dimmer) with an untyped-dimmer fallback; `Engine::pauseWhile`
+> guards structural edits against the render thread. UI: tabbed shell (Live/Patch/Fixtures),
+> `PatchPanel` (GDTF/MVR import, library browse, add-at-first-free-address, overlap flagged),
+> `FixtureSheet` (live per-fixture values). 53 unit tests (GDTF parse+encode, library, patch,
+> real-mode render, MVR round-trip incl. in-memory .mvr with an embedded .gdtf).
+> *Deferred:* geometry/subfixture (multi-cell) expansion, wheels/relations/physical
+> resolution, and GDTF XSD/schematron validation — carried into the Phase 4 programmer work.
 
 **Phase 4 — Programmer & presets (reference-tracked)**
 Selection + attribute editing by FeatureGroup; active-value tracking; Highlight/Clear/Off;

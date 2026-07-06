@@ -1,6 +1,8 @@
 #include <juce_gui_extra/juce_gui_extra.h>
 
 #include "DmxOutputView.h"
+#include "FixtureSheet.h"
+#include "PatchPanel.h"
 
 #include "system_r/core/Engine.h"
 #include "system_r/core/OutputConfig.h"
@@ -11,6 +13,7 @@
 #include "system_r/core/Universe.h"
 #include "system_r/core/artnet/ArtNetPacket.h"
 #include "system_r/core/artnet/ArtNetReceiver.h"
+#include "system_r/core/gdtf/FixtureLibrary.h"
 #include "system_r/core/net/InputMerger.h"
 #include "system_r/core/sacn/SacnReceiver.h"
 #include "system_r/core/sacn/SacnSender.h"
@@ -20,14 +23,14 @@
 namespace systemr
 {
 //==============================================================================
-/** Phase 1 walking-skeleton UI: one dimmer fader drives the programmer; a live
-    readout polls the engine's output snapshot. Proves UI → engine → sACN wire. */
-class MainComponent final : public juce::Component,
-                            private juce::Timer
+/** Live tab: one dimmer fader drives the programmer; a live readout plus the DMX output
+    grid poll the engine's output snapshot. Proves UI → engine → sACN wire. */
+class LiveView final : public juce::Component,
+                       private juce::Timer
 {
 public:
-    MainComponent (Programmer& p, TripleBuffer<UniverseSet>& out,
-                   std::vector<UniverseOutput> configs, juce::String target)
+    LiveView (Programmer& p, TripleBuffer<UniverseSet>& out,
+              std::vector<UniverseOutput> configs, juce::String target)
         : programmer (p), output (out), sacnTarget (std::move (target)),
           dmxView (out, configs)
     {
@@ -112,7 +115,40 @@ private:
     juce::Slider dimmer;
     DmxOutputView dmxView;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LiveView)
+};
+
+//==============================================================================
+/** Root content: a tabbed shell over the Live view, the Patch panel and the Fixture
+    Sheet. (The full tiled multi-window layout is Phase 6.) */
+class RootComponent final : public juce::Component
+{
+public:
+    RootComponent (Programmer& programmer, TripleBuffer<UniverseSet>& output,
+                   std::vector<UniverseOutput> configs, ShowDocument& show,
+                   gdtf::FixtureLibrary& library, Engine& engine, juce::String target)
+        : liveView (programmer, output, configs, std::move (target)),
+          patchPanel (show, library, engine),
+          fixtureSheet (show, configs, output),
+          tabs (juce::TabbedButtonBar::TabsAtTop)
+    {
+        const auto bg = juce::Colour (0xff101010);
+        tabs.addTab ("Live", bg, &liveView, false);
+        tabs.addTab ("Patch", bg, &patchPanel, false);
+        tabs.addTab ("Fixtures", bg, &fixtureSheet, false);
+        addAndMakeVisible (tabs);
+        setSize (980, 620);
+    }
+
+    void resized() override { tabs.setBounds (getLocalBounds()); }
+
+private:
+    LiveView liveView;
+    PatchPanel patchPanel;
+    FixtureSheet fixtureSheet;
+    juce::TabbedComponent tabs;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RootComponent)
 };
 
 //==============================================================================
@@ -120,15 +156,17 @@ class MainWindow final : public juce::DocumentWindow
 {
 public:
     MainWindow (const juce::String& name, Programmer& programmer,
-                TripleBuffer<UniverseSet>& output,
-                std::vector<UniverseOutput> configs, const juce::String& sacnTarget)
+                TripleBuffer<UniverseSet>& output, std::vector<UniverseOutput> configs,
+                ShowDocument& show, gdtf::FixtureLibrary& library, Engine& engine,
+                const juce::String& sacnTarget)
         : DocumentWindow (name,
                           juce::Desktop::getInstance().getDefaultLookAndFeel()
                               .findColour (juce::ResizableWindow::backgroundColourId),
                           DocumentWindow::allButtons)
     {
         setUsingNativeTitleBar (true);
-        setContentOwned (new MainComponent (programmer, output, std::move (configs), sacnTarget), true);
+        setContentOwned (new RootComponent (programmer, output, std::move (configs),
+                                            show, library, engine, sacnTarget), true);
         setResizable (true, true);
         centreWithSize (getWidth(), getHeight());
         setVisible (true);
@@ -170,7 +208,7 @@ public:
         output.setConfig (configs);
         output.open();
 
-        engine = std::make_unique<Engine> (show, programmer, output);
+        engine = std::make_unique<Engine> (show, library, programmer, output);
         engine->start (40);
 
         // Input: listen for external sACN/Art-Net and merge it (monitor + tracking-backup).
@@ -189,7 +227,8 @@ public:
 
         const auto target = SacnSender::multicastAddress (1) + "  (+3 universes)";
         mainWindow = std::make_unique<MainWindow> (getApplicationName(), programmer,
-                                                   engine->output(), configs, target);
+                                                   engine->output(), configs,
+                                                   show, library, *engine, target);
     }
 
     void shutdown() override
@@ -206,6 +245,7 @@ public:
 
 private:
     ShowDocument show;
+    gdtf::FixtureLibrary library;
     Programmer programmer;
     OutputManager output;
     InputMerger inputMerger;
