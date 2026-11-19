@@ -10,6 +10,11 @@ juce_add_gui_app(systemr_app
 target_sources(systemr_app PRIVATE
     src/Main.cpp)
 
+# Embedded resources (exposed as BinaryData::*). Lucide icon font: ISC licence,
+# see resources/fonts/LICENSE-lucide.txt.
+juce_add_binary_data(systemr_app_resources
+    SOURCES resources/fonts/lucide.ttf)
+
 # Trim JUCE features we do not use yet (keeps the build lean and dependency-free
 # on Linux: no libcurl / webkit needed).
 target_compile_definitions(systemr_app PRIVATE
@@ -20,6 +25,7 @@ target_compile_definitions(systemr_app PRIVATE
 
 target_link_libraries(systemr_app PRIVATE
     systemr::core
+    systemr_app_resources
     juce::juce_gui_extra
     juce::juce_recommended_config_flags
     juce::juce_recommended_warning_flags

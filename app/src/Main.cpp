@@ -3,6 +3,7 @@
 #include "DmxOutputView.h"
 #include "FixtureSheet.h"
 #include "PatchPanel.h"
+#include "Sidebar.h"
 
 #include "system_r/core/Engine.h"
 #include "system_r/core/OutputConfig.h"
@@ -119,8 +120,8 @@ private:
 };
 
 //==============================================================================
-/** Root content: a tabbed shell over the Live view, the Patch panel and the Fixture
-    Sheet. (The full tiled multi-window layout is Phase 6.) */
+/** Root content: the icon sidebar on the left, and a tabbed shell over the Live view, the
+    Patch panel and the Fixture Sheet. (The full tiled multi-window layout is Phase 6.) */
 class RootComponent final : public juce::Component
 {
 public:
@@ -137,16 +138,27 @@ public:
         tabs.addTab ("Patch", bg, &patchPanel, false);
         tabs.addTab ("Fixtures", bg, &fixtureSheet, false);
         addAndMakeVisible (tabs);
-        setSize (980, 620);
+
+        // Menu actions (File / Screens / Settings) are wired up later.
+        addAndMakeVisible (sidebar);
+
+        setSize (980 + Sidebar::width, 620);
     }
 
-    void resized() override { tabs.setBounds (getLocalBounds()); }
+    void resized() override
+    {
+        auto r = getLocalBounds();
+        sidebar.setBounds (r.removeFromLeft (Sidebar::width));
+        tabs.setBounds (r);
+    }
 
 private:
     LiveView liveView;
     PatchPanel patchPanel;
     FixtureSheet fixtureSheet;
     juce::TabbedComponent tabs;
+    Sidebar sidebar;
+    juce::TooltipWindow tooltips { this, 600 };
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RootComponent)
 };
