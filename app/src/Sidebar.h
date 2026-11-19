@@ -12,7 +12,7 @@
 namespace systemr
 {
 /** Left-hand navigation rail: a column of icon buttons (Lucide glyphs) with tooltips.
-    What each item does is wired up later through `onItemClicked`. */
+    Every screen window shows one; what each item does is wired up via `onItemClicked`. */
 class Sidebar final : public juce::Component
 {
 public:
@@ -20,8 +20,9 @@ public:
 
     static constexpr int width = 64;
 
-    /** Called when the user clicks a menu item. */
-    std::function<void (Item)> onItemClicked;
+    /** Called when the user clicks a menu item; `source` is the clicked button (e.g. to
+        anchor a popup menu to it). */
+    std::function<void (Item, juce::Component& source)> onItemClicked;
 
     Sidebar()
     {
@@ -29,10 +30,10 @@ public:
         {
             auto& b = buttons.emplace_back (std::make_unique<IconButton> (def.name, def.glyph));
             b->setTooltip (def.name);
-            b->onClick = [this, item = def.item]
+            b->onClick = [this, item = def.item, button = b.get()]
             {
                 if (onItemClicked)
-                    onItemClicked (item);
+                    onItemClicked (item, *button);
             };
             addAndMakeVisible (*b);
         }

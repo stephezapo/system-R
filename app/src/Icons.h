@@ -26,6 +26,18 @@ inline juce::Typeface::Ptr typeface()
     return tf;
 }
 
+/** The glyph's outline as a path (font units at height 1; position arbitrary). Lucide
+    icons sit on a 24x24 grid; use the path's bounds to locate parts of an icon. */
+inline juce::Path outline (Glyph glyph)
+{
+    juce::GlyphArrangement ga;
+    ga.addLineOfText (juce::FontOptions (typeface()).withHeight (1.0f),
+                      juce::String::charToString (static_cast<juce::juce_wchar> (glyph)), 0.0f, 0.0f);
+    juce::Path p;
+    ga.createPath (p);
+    return p;
+}
+
 /** Draws a Lucide glyph centred in `area`, `size` pixels tall. */
 inline void draw (juce::Graphics& g, Glyph glyph, juce::Rectangle<float> area, float size)
 {

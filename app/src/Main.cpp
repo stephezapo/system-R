@@ -3,7 +3,7 @@
 #include "DmxOutputView.h"
 #include "FixtureSheet.h"
 #include "PatchPanel.h"
-#include "Sidebar.h"
+#include "ScreenManager.h"
 
 #include "system_r/core/Engine.h"
 #include "system_r/core/OutputConfig.h"
@@ -120,14 +120,14 @@ private:
 };
 
 //==============================================================================
-/** Root content: the icon sidebar on the left, and a tabbed shell over the Live view, the
-    Patch panel and the Fixture Sheet. (The full tiled multi-window layout is Phase 6.) */
-class RootComponent final : public juce::Component
+/** Body of the main window (screen 1): a tabbed shell over the Live view, the Patch panel
+    and the Fixture Sheet. (The full tiled multi-window layout is Phase 6.) */
+class MainBody final : public juce::Component
 {
 public:
-    RootComponent (Programmer& programmer, TripleBuffer<UniverseSet>& output,
-                   std::vector<UniverseOutput> configs, ShowDocument& show,
-                   gdtf::FixtureLibrary& library, Engine& engine, juce::String target)
+    MainBody (Programmer& programmer, TripleBuffer<UniverseSet>& output,
+              std::vector<UniverseOutput> configs, ShowDocument& show,
+              gdtf::FixtureLibrary& library, Engine& engine, juce::String target)
         : liveView (programmer, output, configs, std::move (target)),
           patchPanel (show, library, engine),
           fixtureSheet (show, configs, output),
@@ -138,59 +138,18 @@ public:
         tabs.addTab ("Patch", bg, &patchPanel, false);
         tabs.addTab ("Fixtures", bg, &fixtureSheet, false);
         addAndMakeVisible (tabs);
-
-        // Menu actions (File / Screens / Settings) are wired up later.
-        addAndMakeVisible (sidebar);
-
-        setSize (980 + Sidebar::width, 620);
+        setSize (980, 620);
     }
 
-    void resized() override
-    {
-        auto r = getLocalBounds();
-        sidebar.setBounds (r.removeFromLeft (Sidebar::width));
-        tabs.setBounds (r);
-    }
+    void resized() override { tabs.setBounds (getLocalBounds()); }
 
 private:
     LiveView liveView;
     PatchPanel patchPanel;
     FixtureSheet fixtureSheet;
     juce::TabbedComponent tabs;
-    Sidebar sidebar;
-    juce::TooltipWindow tooltips { this, 600 };
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RootComponent)
-};
-
-//==============================================================================
-class MainWindow final : public juce::DocumentWindow
-{
-public:
-    MainWindow (const juce::String& name, Programmer& programmer,
-                TripleBuffer<UniverseSet>& output, std::vector<UniverseOutput> configs,
-                ShowDocument& show, gdtf::FixtureLibrary& library, Engine& engine,
-                const juce::String& sacnTarget)
-        : DocumentWindow (name,
-                          juce::Desktop::getInstance().getDefaultLookAndFeel()
-                              .findColour (juce::ResizableWindow::backgroundColourId),
-                          DocumentWindow::allButtons)
-    {
-        setUsingNativeTitleBar (true);
-        setContentOwned (new RootComponent (programmer, output, std::move (configs),
-                                            show, library, engine, sacnTarget), true);
-        setResizable (true, true);
-        centreWithSize (getWidth(), getHeight());
-        setVisible (true);
-    }
-
-    void closeButtonPressed() override
-    {
-        juce::JUCEApplication::getInstance()->systemRequestedQuit();
-    }
-
-private:
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainWindow)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainBody)
 };
 
 //==============================================================================
@@ -237,15 +196,39 @@ public:
         artnetReceiver.setPollReply (reply);
         artnetReceiver.start();
 
+        // UI: screen 1 (main window) plus whichever extra screens were open last time.
+        juce::PropertiesFile::Options settingsOptions;
+        settingsOptions.applicationName     = "system-R";
+       #if JUCE_LINUX
+        settingsOptions.folderName          = ".config/system-R";   // JUCE resolves it under ~
+       #else
+        settingsOptions.folderName          = "system-R";
+       #endif
+        settingsOptions.filenameSuffix      = ".settings";
+        settingsOptions.osxLibrarySubFolder = "Application Support";
+        settings.setStorageParameters (settingsOptions);
+
         const auto target = SacnSender::multicastAddress (1) + "  (+3 universes)";
-        mainWindow = std::make_unique<MainWindow> (getApplicationName(), programmer,
-                                                   engine->output(), configs,
+        screens = std::make_unique<ScreenManager> (
+            *settings.getUserSettings(),
+            [this, configs, target]
+            {
+                return std::make_unique<MainBody> (programmer, engine->output(), configs,
                                                    show, library, *engine, target);
+            },
+            [this] { systemRequestedQuit(); });
+        tooltips = std::make_unique<juce::TooltipWindow> (nullptr, 600);
+        screens->restoreLayout();
     }
 
     void shutdown() override
     {
-        mainWindow = nullptr;   // tears down the UI before the engine it observes
+        if (screens != nullptr)
+        {
+            screens->saveLayout();   // remember open screens + window positions/sizes
+            screens = nullptr;       // tears down the UI before the engine it observes
+        }
+        tooltips = nullptr;
         sacnReceiver.stop();
         artnetReceiver.stop();
         if (engine != nullptr)
@@ -264,7 +247,9 @@ private:
     SacnReceiver sacnReceiver { inputMerger };
     ArtNetReceiver artnetReceiver { inputMerger };
     std::unique_ptr<Engine> engine;
-    std::unique_ptr<MainWindow> mainWindow;
+    juce::ApplicationProperties settings;
+    std::unique_ptr<juce::TooltipWindow> tooltips;   // one, shared by all screen windows
+    std::unique_ptr<ScreenManager> screens;
 };
 } // namespace systemr
 
