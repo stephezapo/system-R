@@ -95,7 +95,7 @@ TEST_CASE ("GDTF parses from a real .gdtf zip archive", "[gdtf]")
     // Build a minimal .gdtf (a ZIP containing description.xml) in memory.
     const auto xml = test::sampleGdtfXml();
     juce::ZipFile::Builder builder;
-    builder.addEntry (new juce::MemoryInputStream (xml.toRawUTF8(), xml.getNumBytesAsUTF8(), false),
+    builder.addEntry (std::make_unique<juce::MemoryInputStream> (xml.toRawUTF8(), xml.getNumBytesAsUTF8(), false),
                       6, "description.xml", juce::Time::getCurrentTime());
 
     juce::MemoryOutputStream zipped;

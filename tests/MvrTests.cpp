@@ -48,7 +48,7 @@ namespace
     {
         const auto xml = systemr::test::sampleGdtfXml();
         juce::ZipFile::Builder b;
-        b.addEntry (new juce::MemoryInputStream (xml.toRawUTF8(), xml.getNumBytesAsUTF8(), false),
+        b.addEntry (std::make_unique<juce::MemoryInputStream> (xml.toRawUTF8(), xml.getNumBytesAsUTF8(), false),
                     0, "description.xml", juce::Time::getCurrentTime());
         juce::MemoryOutputStream out;
         b.writeToStream (out, nullptr);
@@ -101,9 +101,9 @@ TEST_CASE ("MVR import resolves embedded GDTFs and patches the show", "[mvr][gdt
     const auto gdtfArchive = buildGdtfArchive();
 
     juce::ZipFile::Builder b;
-    b.addEntry (new juce::MemoryInputStream (scene.toRawUTF8(), scene.getNumBytesAsUTF8(), false),
+    b.addEntry (std::make_unique<juce::MemoryInputStream> (scene.toRawUTF8(), scene.getNumBytesAsUTF8(), false),
                 0, "GeneralSceneDescription.xml", juce::Time::getCurrentTime());
-    b.addEntry (new juce::MemoryInputStream (gdtfArchive.getData(), gdtfArchive.getSize(), false),
+    b.addEntry (std::make_unique<juce::MemoryInputStream> (gdtfArchive.getData(), gdtfArchive.getSize(), false),
                 0, "Acme@Test Spot.gdtf", juce::Time::getCurrentTime());
 
     juce::MemoryOutputStream mvr;

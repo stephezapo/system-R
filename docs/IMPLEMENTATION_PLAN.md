@@ -1,6 +1,6 @@
 # system-R — Implementation Plan
 
-An open-source lighting console (grandMA3-style) built on the **JUCE 8** framework in
+An open-source lighting console (grandMA3-style) built on the **JUCE 9** framework in
 modern C++, buildable and runnable on **Linux, macOS and Windows**.
 
 > Status: greenfield. The previous Java/JavaFX/Gradle prototype (`system_r/`) is being
@@ -40,8 +40,8 @@ publishing, and live grids are all built and perf-tested against this ceiling.
 
 | Concern | Choice | Rationale |
 |---|---|---|
-| Language | C++20 | JUCE 8 baseline; `std::span`, concepts, `<bit>` for packet work |
-| UI / app framework | JUCE 8.0.x | Cross-platform GUI, UDP sockets, XML, ZIP, threads, `ValueTree` in one dependency |
+| Language | C++20 | JUCE 9 baseline; `std::span`, concepts, `<bit>` for packet work |
+| UI / app framework | JUCE 9.0.x | Cross-platform GUI, UDP sockets, XML, ZIP, threads, `ValueTree` in one dependency |
 | Build | CMake ≥ 3.24 + `juce_add_gui_app` | The only sane cross-platform JUCE path (Projucer is legacy); JUCE via `FetchContent` or submodule |
 | Show serialisation | `juce::ValueTree` → binary + XML/JSON export | Native change-broadcast + `UndoManager`; maps cleanly onto the document model |
 | GDTF/MVR | `juce::ZipFile` + `juce::XmlDocument` (own parser) | Avoids a heavy 3rd-party GDTF lib; keeps the dependency surface to JUCE only |
@@ -49,7 +49,7 @@ publishing, and live grids are all built and perf-tested against this ceiling.
 | Tests | Catch2 (or GoogleTest) via CTest | Round-trip packet + GDTF-parse + merge-engine unit tests |
 | CI | GitHub Actions matrix (ubuntu/macos/windows) | Guarantees the tri-platform build promise stays true |
 
-**Licensing — DECIDED: open-source (AGPLv3) path.** JUCE 8 is used under its **AGPLv3**
+**Licensing — DECIDED: open-source (AGPLv3) path.** JUCE 9 is used under its **AGPLv3**
 option (no commercial licence purchased). Implications, to action before first release:
 - The **distributed application** (JUCE-linked binaries) is licensed **AGPLv3** — full
   source of the distributed version must be offered, including the AGPL §13 network-use

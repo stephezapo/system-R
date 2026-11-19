@@ -151,7 +151,7 @@ std::optional<FixtureType> parseGdtfFile (const juce::File& gdtfArchive)
 std::optional<FixtureType> parseGdtfData (const void* data, size_t numBytes)
 {
     juce::MemoryInputStream mem (data, numBytes, false);
-    juce::ZipFile zip (&mem, false);
+    juce::ZipFile zip (mem);
     return parseGdtfFromZip (zip);
 }
 }

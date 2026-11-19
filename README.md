@@ -4,7 +4,7 @@ Open-source lighting console.
 
 The goal of this project is to develop an open source software system for DIY lighting
 control desks with special regard to touch-based UI navigation and custom hardware controls
-for programming and playback — a grandMA3-style console built on the **JUCE 8** framework and
+for programming and playback — a grandMA3-style console built on the **JUCE 9** framework and
 runnable on Linux, macOS and Windows.
 
 See [docs/IMPLEMENTATION_PLAN.md](docs/IMPLEMENTATION_PLAN.md) for the architecture and roadmap.
@@ -12,7 +12,7 @@ See [docs/IMPLEMENTATION_PLAN.md](docs/IMPLEMENTATION_PLAN.md) for the architect
 ## Building
 
 **Prerequisites:** CMake ≥ 3.24, a C++20 compiler (MSVC 2022 / AppleClang / GCC ≥ 12 or
-Clang), and Git. JUCE 8 and Catch2 are fetched automatically at configure time.
+Clang), and Git. JUCE 9 and Catch2 are fetched automatically at configure time.
 
 On Linux, install the JUCE GUI dependencies first:
 
@@ -38,5 +38,5 @@ JUCE writes the application into its artefacts folder:
 ## Licensing
 
 First-party source in this repository is released into the public domain (see `LICENSE`).
-Distributed builds link JUCE 8 under its **AGPLv3** option, so binary releases are governed
+Distributed builds link JUCE 9 under its **AGPLv3** option, so binary releases are governed
 by the AGPLv3; see the licensing note in the implementation plan for details.

@@ -35,3 +35,9 @@ target_link_libraries(systemr_core PUBLIC
     juce::juce_core
     juce::juce_events
     juce::juce_data_structures)
+
+# JUCE module config shared by every consumer (core, app, tests) so all TUs agree
+# and Linux builds need neither libcurl nor webkit.
+target_compile_definitions(systemr_core PUBLIC
+    JUCE_WEB_BROWSER=0
+    JUCE_USE_CURL=0)

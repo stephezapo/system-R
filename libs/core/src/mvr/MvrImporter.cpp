@@ -199,7 +199,7 @@ std::optional<MvrScene> importMvrFile (const juce::File& mvrArchive, gdtf::Fixtu
 std::optional<MvrScene> importMvrData (const void* data, size_t numBytes, gdtf::FixtureLibrary& library)
 {
     juce::MemoryInputStream mem (data, numBytes, false);
-    juce::ZipFile zip (&mem, false);
+    juce::ZipFile zip (mem);
     return importFromZip (zip, library);
 }
 

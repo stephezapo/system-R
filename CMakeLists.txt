@@ -29,11 +29,11 @@ option(SYSTEMR_BUILD_TESTS "Build the unit-test suite" ON)
 # ---------------------------------------------------------------------------
 include(FetchContent)
 
-# JUCE 8 — the UI / app framework. Pinned; override the source dir for offline
+# JUCE 9 — the UI / app framework. Pinned; override the source dir for offline
 # builds with -DFETCHCONTENT_SOURCE_DIR_JUCE=/path/to/local/JUCE.
 FetchContent_Declare(JUCE
     GIT_REPOSITORY https://github.com/juce-framework/JUCE.git
-    GIT_TAG        8.0.9
+    GIT_TAG        9.0.6
     GIT_SHALLOW    TRUE)
 FetchContent_MakeAvailable(JUCE)
 
